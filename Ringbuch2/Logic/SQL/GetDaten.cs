@@ -823,7 +823,18 @@ namespace Ringbuch2
       _dataReader = _command.ExecuteReader();
       return _dataReader;
     }
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="dbTableName"></param>
+    /// <param name="dbWhere"></param>
+    /// <returns></returns>
+    private SQLiteDataReader CreateSelectStatement(string dbTableName, List<Tuple<string, string, Boolean>> dbWhere)
+    {
 
+      _dataReader = _command.ExecuteReader();
+      return _dataReader;
+    }
     /// <summary>
     /// 
     /// </summary>
