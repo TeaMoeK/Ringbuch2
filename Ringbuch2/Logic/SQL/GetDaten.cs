@@ -832,6 +832,13 @@ namespace Ringbuch2
     private SQLiteDataReader CreateSelectStatement(string dbTableName, List<Tuple<string, string, Boolean>> dbWhere)
     {
 
+      foreach (var item in dbWhere)
+      {
+
+      }
+
+      _command.CommandText = "SELECT rowid, * FROM " + dbTableName + " WHERE " + dbWhere + " = '" + dbValue + "' AND IstArchiviert = 0";
+
       _dataReader = _command.ExecuteReader();
       return _dataReader;
     }
