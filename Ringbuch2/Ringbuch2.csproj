@@ -81,6 +81,7 @@
     <Compile Include="Logic\Material\Material.cs" />
     <Compile Include="Logic\Material\MaterialFactory.cs" />
     <Compile Include="Logic\SQL\GetDaten.cs" />
+    <Compile Include="Logic\SQL\Operator.cs" />
     <Compile Include="Logic\SQL\SetDaten.cs" />
     <Compile Include="Logic\SQL\SqliteCon.cs" />
     <Compile Include="Program.cs" />

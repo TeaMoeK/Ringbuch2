@@ -14,9 +14,12 @@ namespace Ringbuch2
     [STAThread]
     static void Main()
     {
+      GetDaten get = new GetDaten();
       Application.EnableVisualStyles();
       Application.SetCompatibleTextRenderingDefault(false);
       Application.Run(new Form1());
+      
+      
     }
   }
 }

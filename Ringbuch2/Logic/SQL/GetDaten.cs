@@ -45,7 +45,12 @@ namespace Ringbuch2
       }
     }
     #endregion
-
+    public GetDaten()
+    {
+      List<Tuple<bool?, string, Operator, string>> whereListe = new List<Tuple<bool?, string, Operator, string>>();
+      whereListe.Add(new Tuple<bool?, string, Operator, string>(null, "Vorname", new Operator(Operator.vergleichsoperatoren.EQUAL), "Timo"));
+      CreateSelectStatement("", whereListe, false);
+    }
 
     private void getDatabasePathXML()
     {
@@ -320,11 +325,13 @@ namespace Ringbuch2
 
     public List<string> getSchiessArten()
     {
+      List<Tuple<bool?, string, Operator, string>> whereListe = new List<Tuple<bool?, string, Operator, string>>();
 
       DoConnect();
       _command = new SQLiteCommand(_con);
       //_dataReader = CreateSelectStatement("SchiessArt", "Schiessarten");
-      _dataReader = CreateSelectStatement("SchiessArten");
+
+      _dataReader = CreateSelectStatement("SchiessArten", whereListe, false);
       List<string> liste = new List<string>();
       while (_dataReader.Read())
       {
@@ -336,11 +343,13 @@ namespace Ringbuch2
 
     public DataTable getSchiessArtenDt()
     {
+
       DoConnect();
       _command = new SQLiteCommand(_con);
       DataTable dt = CreateDataTable("SchiessArten");
       dt.Columns.Add("Anzeige");
-      _dataReader = CreateSelectStatement("SchiessArten");
+
+      _dataReader = CreateSelectStatement("rowid, *", "SchiessArten");
 
       while (_dataReader.Read())
       {
@@ -602,9 +611,11 @@ namespace Ringbuch2
     public DataTable getMaterialByID(int ID)
     {
       DoConnect();
+      List<Tuple<bool?, string, Operator, string>> whereListe = new List<Tuple<bool?, string, Operator, string>>();
       _command = new SQLiteCommand(_con);
       DataTable dt = CreateDataTable("Material");
-      _dataReader = CreateSelectStatement("Material", "NamenID", ID.ToString());
+      whereListe.Add(new Tuple<bool?, string, Operator, string>(null, "NamenID", new Operator(Operator.vergleichsoperatoren.EQUAL), ID.ToString()));
+      _dataReader = CreateSelectStatement("Material", whereListe, false);
 
       CloseDataReader();
       return null;
@@ -631,7 +642,7 @@ namespace Ringbuch2
       DoConnect();
       _command = new SQLiteCommand(_con);
       DataTable dt = CreateDataTable("Personen");
-      _dataReader = CreateSelectStatement("Personen");
+      _dataReader = CreateSelectStatement("rowid, *", "Personen");
 
       while (_dataReader.Read())
       {
@@ -668,16 +679,20 @@ namespace Ringbuch2
     public DataTable GetErgebnisse(int ID, string vonDatum, string bisDatum, string schiessArt)
     {
       DoConnect();
+      List<Tuple<bool?, string, Operator, string>> whereListe = new List<Tuple<bool?, string, Operator, string>>();
       DataTable dt = CreateDataTable("Ergebnisse");
       if (vonDatum == "" && bisDatum == "")
       {
         if (schiessArt == "")
         {
-          _dataReader = CreateSelectStatement("Ergebnisse", "NamenID", ID.ToString());
+          whereListe.Add(new Tuple<bool?, string, Operator, string>(null, "NamenID", new Operator(Operator.vergleichsoperatoren.EQUAL), ID.ToString()));
+          _dataReader = CreateSelectStatement("Ergebnisse", whereListe, false);
         }
         else
         {
-          _dataReader = CreateSelectStatement("rowid, *", "Ergebnisse", "Art = '" + schiessArt + "' AND NamenID = " + ID, "");
+          whereListe.Add(new Tuple<bool?, string, Operator, string>(null, "Art", new Operator(Operator.vergleichsoperatoren.EQUAL), schiessArt));
+          whereListe.Add(new Tuple<bool?, string, Operator, string>(true, "NamenID", new Operator(Operator.vergleichsoperatoren.EQUAL), ID.ToString()));
+          _dataReader = CreateSelectStatement("Ergebnisse", whereListe, false);
         }
 
       }
@@ -685,8 +700,9 @@ namespace Ringbuch2
       {
         if (schiessArt == "")
         {
-          _dataReader = CreateSelectStatement(
-              "rowid, *", "Ergebnisse", "Datum > '" + vonDatum + " 00:00.000' AND IstArchiviert = 0 AND NamenID = " + ID, "");
+          whereListe.Add(new Tuple<bool?, string, Operator, string>(null, "Datum", new Operator(Operator.vergleichsoperatoren.GREATER), vonDatum));
+          whereListe.Add(new Tuple<bool?, string, Operator, string>(true, "NamenID", new Operator(Operator.vergleichsoperatoren.EQUAL), ID.ToString()));
+          _dataReader = CreateSelectStatement("Ergebnisse", whereListe, false);
         }
         else
         {
@@ -788,20 +804,20 @@ namespace Ringbuch2
     /// </summary>
     /// <param name="dbTableName"></param>
     /// <returns></returns>
-    private SQLiteDataReader CreateSelectStatement(string dbTableName)
-    {
-      if (dbTableName.ToLower() == "personen" || dbTableName.ToLower() == "ergebnisse" || dbTableName.ToLower() == "schiessarten")
-      {
-        _command.CommandText = "SELECT rowid, * FROM " + dbTableName + " WHERE IstArchiviert = 0";
-      }
-      else
-      {
-        _command.CommandText = "SELECT rowid, * FROM " + dbTableName;
-      }
+    //private SQLiteDataReader CreateSelectStatement(string dbTableName)
+    //{
+    //  if (dbTableName.ToLower() == "personen" || dbTableName.ToLower() == "ergebnisse" || dbTableName.ToLower() == "schiessarten")
+    //  {
+    //    _command.CommandText = "SELECT rowid, * FROM " + dbTableName + " WHERE IstArchiviert = 0";
+    //  }
+    //  else
+    //  {
+    //    _command.CommandText = "SELECT rowid, * FROM " + dbTableName;
+    //  }
 
-      _dataReader = _command.ExecuteReader();
-      return _dataReader;
-    }
+    //  _dataReader = _command.ExecuteReader();
+    //  return _dataReader;
+    //}
 
     /// <summary>
     /// 
@@ -810,34 +826,40 @@ namespace Ringbuch2
     /// <param name="dbWhere"></param>
     /// <param name="dbValue"></param>
     /// <returns></returns>
-    private SQLiteDataReader CreateSelectStatement(string dbTableName, string dbWhere, string dbValue)
-    {
-      if (dbTableName.ToLower() == "ergebnisse")
-      {
-        _command.CommandText = "SELECT rowid, * FROM " + dbTableName + " WHERE " + dbWhere + " = '" + dbValue + "' AND IstArchiviert = 0";
-      }
-      else
-      {
-        _command.CommandText = "SELECT rowid, * FROM " + dbTableName + " WHERE " + dbWhere + " = '" + dbValue + "'";
-      }
-      _dataReader = _command.ExecuteReader();
-      return _dataReader;
-    }
+    //private SQLiteDataReader CreateSelectStatement(string dbTableName)
+    //{
+    //  _command.CommandText = "SELECT rowid, * FROM " + dbTableName + " WHERE IstArchiviert = 0";
+    //  _dataReader = _command.ExecuteReader();
+    //  return _dataReader;
+    //}
     /// <summary>
-    /// 
+    /// Tuple besteht aus string = Column, string = Value, bool? -> true = AND, false = OR. 
+    /// Es wird mit LIKE verknüpft. (WHERE Column LIKE 'Value')
     /// </summary>
     /// <param name="dbTableName"></param>
     /// <param name="dbWhere"></param>
     /// <returns></returns>
-    private SQLiteDataReader CreateSelectStatement(string dbTableName, List<Tuple<string, string, Boolean>> dbWhere)
+    private SQLiteDataReader CreateSelectStatement(string dbTableName, List<Tuple<bool?, string, Operator, string>> dbWhere, bool arivierte)
     {
-
+      string where = string.Empty;
       foreach (var item in dbWhere)
       {
 
-      }
+        if (item.Item1 == null)
+        {
+          where += item.Item1 + item.Item3.ToString() + "'" + item.Item2 + "' ";
+        }
+        else if (item.Item1 == true)
+        {
+          where += " AND " + item.Item1 + item.Item3.ToString() + "'" + item.Item2 + "'";
+        }
+        else if (item.Item1 == false)
+        {
+          where += " OR " + item.Item1 + item.Item3.ToString() + "'" + item.Item2 + "'";
+        }
 
-      _command.CommandText = "SELECT rowid, * FROM " + dbTableName + " WHERE " + dbWhere + " = '" + dbValue + "' AND IstArchiviert = 0";
+      }
+      _command.CommandText = "SELECT rowid, * FROM " + dbTableName + where + " AND IstArchiviert = " + arivierte.ToString();
 
       _dataReader = _command.ExecuteReader();
       return _dataReader;
@@ -850,9 +872,28 @@ namespace Ringbuch2
     /// <returns></returns>
     private SQLiteDataReader CreateSelectStatement(string dbColumns, string dbTableName)
     {
-      _command.CommandText = "SELECT " + dbColumns + " FROM " + dbTableName;
+
+      _command.CommandText = "SELECT " + dbColumns + " FROM " + dbTableName + " WHERE IstArchiviert = 0";
       _dataReader = _command.ExecuteReader();
       return _dataReader;
+    }
+    private bool HatIstArchiviert(string table)
+    {
+      DoConnect();
+      bool retn = false;
+
+      _command.CommandText = "PRAGMA table_info(" + table + ")";
+      _dataReader = _command.ExecuteReader();
+
+      while (_dataReader.Read())
+      {
+        if (_dataReader.GetValue(1).ToString().ToLower() == "istarchiviert")
+        {
+          retn = true;
+          break;
+        }
+      }
+      return retn;
     }
 
     /// <summary>
