@@ -676,7 +676,7 @@ namespace Ringbuch2
       string DatumOhneZeit = date.ToString("dd.MM.yyyy");
       return DatumOhneZeit;
     }
-    public DataTable GetErgebnisse(int ID, string vonDatum, string bisDatum, string schiessArt)
+    public DataTable GetErgebnisse(int ID, string vonDatum, string bisDatum, string schiessArt, bool archivierte)
     {
       DoConnect();
       List<Tuple<bool?, string, Operator, string>> whereListe = new List<Tuple<bool?, string, Operator, string>>();
@@ -686,13 +686,12 @@ namespace Ringbuch2
         if (schiessArt == "")
         {
           whereListe.Add(new Tuple<bool?, string, Operator, string>(null, "NamenID", new Operator(Operator.vergleichsoperatoren.EQUAL), ID.ToString()));
-          _dataReader = CreateSelectStatement("Ergebnisse", whereListe, false);
         }
         else
         {
           whereListe.Add(new Tuple<bool?, string, Operator, string>(null, "Art", new Operator(Operator.vergleichsoperatoren.EQUAL), schiessArt));
           whereListe.Add(new Tuple<bool?, string, Operator, string>(true, "NamenID", new Operator(Operator.vergleichsoperatoren.EQUAL), ID.ToString()));
-          _dataReader = CreateSelectStatement("Ergebnisse", whereListe, false);
+          
         }
 
       }
@@ -702,12 +701,12 @@ namespace Ringbuch2
         {
           whereListe.Add(new Tuple<bool?, string, Operator, string>(null, "Datum", new Operator(Operator.vergleichsoperatoren.GREATER), vonDatum));
           whereListe.Add(new Tuple<bool?, string, Operator, string>(true, "NamenID", new Operator(Operator.vergleichsoperatoren.EQUAL), ID.ToString()));
-          _dataReader = CreateSelectStatement("Ergebnisse", whereListe, false);
         }
         else
         {
-          _dataReader = CreateSelectStatement(
-              "rowid, *", "Ergebnisse", "Datum > '" + vonDatum + " 00:00.000' AND IstArchiviert = 0 AND NamenID = " + ID + " AND Art = '" + schiessArt + "'", "");
+          whereListe.Add(new Tuple<bool?, string, Operator, string>(null, "Datum", new Operator(Operator.vergleichsoperatoren.GREATER), vonDatum));
+          whereListe.Add(new Tuple<bool?, string, Operator, string>(true, "NamenID", new Operator(Operator.vergleichsoperatoren.EQUAL), ID.ToString()));
+          whereListe.Add(new Tuple<bool?, string, Operator, string>(true, "Art", new Operator(Operator.vergleichsoperatoren.EQUAL), schiessArt));
         }
       }
       else if (vonDatum != "" && bisDatum != "")
@@ -716,6 +715,9 @@ namespace Ringbuch2
         {
           _dataReader = CreateSelectStatement(
               "rowid, *", "Ergebnisse", "Datum >'" + vonDatum + " 00:00.000' AND Datum <'" + bisDatum + " 23:59.999' AND IstArchiviert = 0 AND NamenID = " + ID, "");
+          whereListe.Add(new Tuple<bool?, string, Operator, string>(null, "Datum", new Operator(Operator.vergleichsoperatoren.GREATER), vonDatum));
+          whereListe.Add(new Tuple<bool?, string, Operator, string>(true, "Datum", new Operator(Operator.vergleichsoperatoren.LESS), bisDatum));
+          whereListe.Add(new Tuple<bool?, string, Operator, string>(true, "NamenID", new Operator(Operator.vergleichsoperatoren.EQUAL), ID.ToString()));
         }
         else
         {
@@ -724,7 +726,7 @@ namespace Ringbuch2
               "Datum >'" + vonDatum + " 00:00.000' AND Datum <'" + bisDatum + " 23:59.999' AND IstArchiviert = 0 AND NamenID = " + ID + " AND Art = '" + schiessArt + "'", "");
         }
       }
-
+      _dataReader = CreateSelectStatement("Ergebnisse", whereListe, archivierte);
 
       while (_dataReader.Read())
       {
