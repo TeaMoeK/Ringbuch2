@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RBii
@@ -28,6 +21,12 @@ namespace RBii
     {
       materialTableAdapter.Fill(this.rBDataMaterial.Material, Convert.ToInt32(dgvPersonen.Rows[dgvPersonen.CurrentRow.Index].Cells[0].Value));
       ergebnisseTableAdapter.Fill(this.rBDataErgebnisse.Ergebnisse, Convert.ToInt32(dgvPersonen.Rows[dgvPersonen.CurrentRow.Index].Cells[0].Value));
+    }
+
+    private void button1_Click(object sender, EventArgs e)
+    {
+      DateTime bday = new DateTime(1980, 08, 26);
+      MessageBox.Show(DatenVerarbeitung.DateTimes.GetAlter(bday).ToString());
     }
   }
 }

@@ -30,24 +30,6 @@
     {
       this.components = new System.ComponentModel.Container();
       this.dgvPersonen = new System.Windows.Forms.DataGridView();
-      this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.adressIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.vornameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.zweitnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.nachnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.geburtstagDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.geschlechtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.darfKKDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-      this.darfLGDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-      this.kleinkaliberIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.luftgewehrIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.handschuhIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.jackeIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.pistoleIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.infoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.istKoenigDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-      this.istVizeDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-      this.istArchiviertDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
       this.personenBindingSource = new System.Windows.Forms.BindingSource(this.components);
       this.rBDataDataSet = new RBii.RBDataDataSet();
       this.personenTableAdapter = new RBii.RBDataDataSetTableAdapters.PersonenTableAdapter();
@@ -80,6 +62,24 @@
       this.menuStrip1 = new System.Windows.Forms.MenuStrip();
       this.dateiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.ergebnisseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.adressIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.vornameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.zweitnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.nachnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.geburtstagDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.geschlechtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.darfKKDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+      this.darfLGDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+      this.kleinkaliberIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.luftgewehrIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.handschuhIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.jackeIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.pistoleIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.infoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.istKoenigDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+      this.istVizeDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+      this.istArchiviertDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
       ((System.ComponentModel.ISupportInitialize)(this.dgvPersonen)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.personenBindingSource)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.rBDataDataSet)).BeginInit();
@@ -122,152 +122,9 @@
       this.dgvPersonen.MultiSelect = false;
       this.dgvPersonen.Name = "dgvPersonen";
       this.dgvPersonen.ReadOnly = true;
-      this.dgvPersonen.Size = new System.Drawing.Size(346, 690);
+      this.dgvPersonen.Size = new System.Drawing.Size(284, 690);
       this.dgvPersonen.TabIndex = 0;
       this.dgvPersonen.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPersonen_CellEnter);
-      // 
-      // iDDataGridViewTextBoxColumn
-      // 
-      this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-      this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
-      this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
-      this.iDDataGridViewTextBoxColumn.ReadOnly = true;
-      this.iDDataGridViewTextBoxColumn.Visible = false;
-      // 
-      // adressIDDataGridViewTextBoxColumn
-      // 
-      this.adressIDDataGridViewTextBoxColumn.DataPropertyName = "AdressID";
-      this.adressIDDataGridViewTextBoxColumn.HeaderText = "AdressID";
-      this.adressIDDataGridViewTextBoxColumn.Name = "adressIDDataGridViewTextBoxColumn";
-      this.adressIDDataGridViewTextBoxColumn.ReadOnly = true;
-      this.adressIDDataGridViewTextBoxColumn.Visible = false;
-      // 
-      // vornameDataGridViewTextBoxColumn
-      // 
-      this.vornameDataGridViewTextBoxColumn.DataPropertyName = "Vorname";
-      this.vornameDataGridViewTextBoxColumn.HeaderText = "Vorname";
-      this.vornameDataGridViewTextBoxColumn.Name = "vornameDataGridViewTextBoxColumn";
-      this.vornameDataGridViewTextBoxColumn.ReadOnly = true;
-      // 
-      // zweitnameDataGridViewTextBoxColumn
-      // 
-      this.zweitnameDataGridViewTextBoxColumn.DataPropertyName = "Zweitname";
-      this.zweitnameDataGridViewTextBoxColumn.HeaderText = "Zweitname";
-      this.zweitnameDataGridViewTextBoxColumn.Name = "zweitnameDataGridViewTextBoxColumn";
-      this.zweitnameDataGridViewTextBoxColumn.ReadOnly = true;
-      // 
-      // nachnameDataGridViewTextBoxColumn
-      // 
-      this.nachnameDataGridViewTextBoxColumn.DataPropertyName = "Nachname";
-      this.nachnameDataGridViewTextBoxColumn.HeaderText = "Nachname";
-      this.nachnameDataGridViewTextBoxColumn.Name = "nachnameDataGridViewTextBoxColumn";
-      this.nachnameDataGridViewTextBoxColumn.ReadOnly = true;
-      // 
-      // geburtstagDataGridViewTextBoxColumn
-      // 
-      this.geburtstagDataGridViewTextBoxColumn.DataPropertyName = "Geburtstag";
-      this.geburtstagDataGridViewTextBoxColumn.HeaderText = "Geburtstag";
-      this.geburtstagDataGridViewTextBoxColumn.Name = "geburtstagDataGridViewTextBoxColumn";
-      this.geburtstagDataGridViewTextBoxColumn.ReadOnly = true;
-      // 
-      // geschlechtDataGridViewTextBoxColumn
-      // 
-      this.geschlechtDataGridViewTextBoxColumn.DataPropertyName = "Geschlecht";
-      this.geschlechtDataGridViewTextBoxColumn.HeaderText = "Geschlecht";
-      this.geschlechtDataGridViewTextBoxColumn.Name = "geschlechtDataGridViewTextBoxColumn";
-      this.geschlechtDataGridViewTextBoxColumn.ReadOnly = true;
-      this.geschlechtDataGridViewTextBoxColumn.Visible = false;
-      // 
-      // darfKKDataGridViewCheckBoxColumn
-      // 
-      this.darfKKDataGridViewCheckBoxColumn.DataPropertyName = "DarfKK";
-      this.darfKKDataGridViewCheckBoxColumn.HeaderText = "DarfKK";
-      this.darfKKDataGridViewCheckBoxColumn.MinimumWidth = 50;
-      this.darfKKDataGridViewCheckBoxColumn.Name = "darfKKDataGridViewCheckBoxColumn";
-      this.darfKKDataGridViewCheckBoxColumn.ReadOnly = true;
-      this.darfKKDataGridViewCheckBoxColumn.Width = 50;
-      // 
-      // darfLGDataGridViewCheckBoxColumn
-      // 
-      this.darfLGDataGridViewCheckBoxColumn.DataPropertyName = "DarfLG";
-      this.darfLGDataGridViewCheckBoxColumn.HeaderText = "DarfLG";
-      this.darfLGDataGridViewCheckBoxColumn.MinimumWidth = 50;
-      this.darfLGDataGridViewCheckBoxColumn.Name = "darfLGDataGridViewCheckBoxColumn";
-      this.darfLGDataGridViewCheckBoxColumn.ReadOnly = true;
-      this.darfLGDataGridViewCheckBoxColumn.Width = 50;
-      // 
-      // kleinkaliberIDDataGridViewTextBoxColumn
-      // 
-      this.kleinkaliberIDDataGridViewTextBoxColumn.DataPropertyName = "KleinkaliberID";
-      this.kleinkaliberIDDataGridViewTextBoxColumn.HeaderText = "KleinkaliberID";
-      this.kleinkaliberIDDataGridViewTextBoxColumn.Name = "kleinkaliberIDDataGridViewTextBoxColumn";
-      this.kleinkaliberIDDataGridViewTextBoxColumn.ReadOnly = true;
-      this.kleinkaliberIDDataGridViewTextBoxColumn.Visible = false;
-      // 
-      // luftgewehrIDDataGridViewTextBoxColumn
-      // 
-      this.luftgewehrIDDataGridViewTextBoxColumn.DataPropertyName = "LuftgewehrID";
-      this.luftgewehrIDDataGridViewTextBoxColumn.HeaderText = "LuftgewehrID";
-      this.luftgewehrIDDataGridViewTextBoxColumn.Name = "luftgewehrIDDataGridViewTextBoxColumn";
-      this.luftgewehrIDDataGridViewTextBoxColumn.ReadOnly = true;
-      this.luftgewehrIDDataGridViewTextBoxColumn.Visible = false;
-      // 
-      // handschuhIDDataGridViewTextBoxColumn
-      // 
-      this.handschuhIDDataGridViewTextBoxColumn.DataPropertyName = "HandschuhID";
-      this.handschuhIDDataGridViewTextBoxColumn.HeaderText = "HandschuhID";
-      this.handschuhIDDataGridViewTextBoxColumn.Name = "handschuhIDDataGridViewTextBoxColumn";
-      this.handschuhIDDataGridViewTextBoxColumn.ReadOnly = true;
-      this.handschuhIDDataGridViewTextBoxColumn.Visible = false;
-      // 
-      // jackeIDDataGridViewTextBoxColumn
-      // 
-      this.jackeIDDataGridViewTextBoxColumn.DataPropertyName = "JackeID";
-      this.jackeIDDataGridViewTextBoxColumn.HeaderText = "JackeID";
-      this.jackeIDDataGridViewTextBoxColumn.Name = "jackeIDDataGridViewTextBoxColumn";
-      this.jackeIDDataGridViewTextBoxColumn.ReadOnly = true;
-      this.jackeIDDataGridViewTextBoxColumn.Visible = false;
-      // 
-      // pistoleIDDataGridViewTextBoxColumn
-      // 
-      this.pistoleIDDataGridViewTextBoxColumn.DataPropertyName = "PistoleID";
-      this.pistoleIDDataGridViewTextBoxColumn.HeaderText = "PistoleID";
-      this.pistoleIDDataGridViewTextBoxColumn.Name = "pistoleIDDataGridViewTextBoxColumn";
-      this.pistoleIDDataGridViewTextBoxColumn.ReadOnly = true;
-      this.pistoleIDDataGridViewTextBoxColumn.Visible = false;
-      // 
-      // infoDataGridViewTextBoxColumn
-      // 
-      this.infoDataGridViewTextBoxColumn.DataPropertyName = "Info";
-      this.infoDataGridViewTextBoxColumn.HeaderText = "Info";
-      this.infoDataGridViewTextBoxColumn.Name = "infoDataGridViewTextBoxColumn";
-      this.infoDataGridViewTextBoxColumn.ReadOnly = true;
-      // 
-      // istKoenigDataGridViewCheckBoxColumn
-      // 
-      this.istKoenigDataGridViewCheckBoxColumn.DataPropertyName = "IstKoenig";
-      this.istKoenigDataGridViewCheckBoxColumn.HeaderText = "König";
-      this.istKoenigDataGridViewCheckBoxColumn.MinimumWidth = 50;
-      this.istKoenigDataGridViewCheckBoxColumn.Name = "istKoenigDataGridViewCheckBoxColumn";
-      this.istKoenigDataGridViewCheckBoxColumn.ReadOnly = true;
-      this.istKoenigDataGridViewCheckBoxColumn.Width = 50;
-      // 
-      // istVizeDataGridViewCheckBoxColumn
-      // 
-      this.istVizeDataGridViewCheckBoxColumn.DataPropertyName = "IstVize";
-      this.istVizeDataGridViewCheckBoxColumn.HeaderText = "Vize";
-      this.istVizeDataGridViewCheckBoxColumn.MinimumWidth = 50;
-      this.istVizeDataGridViewCheckBoxColumn.Name = "istVizeDataGridViewCheckBoxColumn";
-      this.istVizeDataGridViewCheckBoxColumn.ReadOnly = true;
-      this.istVizeDataGridViewCheckBoxColumn.Width = 50;
-      // 
-      // istArchiviertDataGridViewCheckBoxColumn
-      // 
-      this.istArchiviertDataGridViewCheckBoxColumn.DataPropertyName = "IstArchiviert";
-      this.istArchiviertDataGridViewCheckBoxColumn.HeaderText = "IstArchiviert";
-      this.istArchiviertDataGridViewCheckBoxColumn.Name = "istArchiviertDataGridViewCheckBoxColumn";
-      this.istArchiviertDataGridViewCheckBoxColumn.ReadOnly = true;
-      this.istArchiviertDataGridViewCheckBoxColumn.Visible = false;
       // 
       // personenBindingSource
       // 
@@ -520,6 +377,161 @@
       this.ergebnisseToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
       this.ergebnisseToolStripMenuItem.Text = "Ergebnisse";
       // 
+      // iDDataGridViewTextBoxColumn
+      // 
+      this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
+      this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
+      this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+      this.iDDataGridViewTextBoxColumn.ReadOnly = true;
+      this.iDDataGridViewTextBoxColumn.Visible = false;
+      // 
+      // adressIDDataGridViewTextBoxColumn
+      // 
+      this.adressIDDataGridViewTextBoxColumn.DataPropertyName = "AdressID";
+      this.adressIDDataGridViewTextBoxColumn.HeaderText = "AdressID";
+      this.adressIDDataGridViewTextBoxColumn.Name = "adressIDDataGridViewTextBoxColumn";
+      this.adressIDDataGridViewTextBoxColumn.ReadOnly = true;
+      this.adressIDDataGridViewTextBoxColumn.Visible = false;
+      // 
+      // vornameDataGridViewTextBoxColumn
+      // 
+      this.vornameDataGridViewTextBoxColumn.DataPropertyName = "Vorname";
+      this.vornameDataGridViewTextBoxColumn.HeaderText = "Vorname";
+      this.vornameDataGridViewTextBoxColumn.MinimumWidth = 80;
+      this.vornameDataGridViewTextBoxColumn.Name = "vornameDataGridViewTextBoxColumn";
+      this.vornameDataGridViewTextBoxColumn.ReadOnly = true;
+      this.vornameDataGridViewTextBoxColumn.Width = 80;
+      // 
+      // zweitnameDataGridViewTextBoxColumn
+      // 
+      this.zweitnameDataGridViewTextBoxColumn.DataPropertyName = "Zweitname";
+      this.zweitnameDataGridViewTextBoxColumn.HeaderText = "Zweitname";
+      this.zweitnameDataGridViewTextBoxColumn.MinimumWidth = 80;
+      this.zweitnameDataGridViewTextBoxColumn.Name = "zweitnameDataGridViewTextBoxColumn";
+      this.zweitnameDataGridViewTextBoxColumn.ReadOnly = true;
+      this.zweitnameDataGridViewTextBoxColumn.Width = 80;
+      // 
+      // nachnameDataGridViewTextBoxColumn
+      // 
+      this.nachnameDataGridViewTextBoxColumn.DataPropertyName = "Nachname";
+      this.nachnameDataGridViewTextBoxColumn.HeaderText = "Nachname";
+      this.nachnameDataGridViewTextBoxColumn.MinimumWidth = 80;
+      this.nachnameDataGridViewTextBoxColumn.Name = "nachnameDataGridViewTextBoxColumn";
+      this.nachnameDataGridViewTextBoxColumn.ReadOnly = true;
+      this.nachnameDataGridViewTextBoxColumn.Width = 80;
+      // 
+      // geburtstagDataGridViewTextBoxColumn
+      // 
+      this.geburtstagDataGridViewTextBoxColumn.DataPropertyName = "Geburtstag";
+      this.geburtstagDataGridViewTextBoxColumn.HeaderText = "Geburtstag";
+      this.geburtstagDataGridViewTextBoxColumn.Name = "geburtstagDataGridViewTextBoxColumn";
+      this.geburtstagDataGridViewTextBoxColumn.ReadOnly = true;
+      this.geburtstagDataGridViewTextBoxColumn.Visible = false;
+      // 
+      // geschlechtDataGridViewTextBoxColumn
+      // 
+      this.geschlechtDataGridViewTextBoxColumn.DataPropertyName = "Geschlecht";
+      this.geschlechtDataGridViewTextBoxColumn.HeaderText = "Geschlecht";
+      this.geschlechtDataGridViewTextBoxColumn.Name = "geschlechtDataGridViewTextBoxColumn";
+      this.geschlechtDataGridViewTextBoxColumn.ReadOnly = true;
+      this.geschlechtDataGridViewTextBoxColumn.Visible = false;
+      // 
+      // darfKKDataGridViewCheckBoxColumn
+      // 
+      this.darfKKDataGridViewCheckBoxColumn.DataPropertyName = "DarfKK";
+      this.darfKKDataGridViewCheckBoxColumn.HeaderText = "DarfKK";
+      this.darfKKDataGridViewCheckBoxColumn.MinimumWidth = 50;
+      this.darfKKDataGridViewCheckBoxColumn.Name = "darfKKDataGridViewCheckBoxColumn";
+      this.darfKKDataGridViewCheckBoxColumn.ReadOnly = true;
+      this.darfKKDataGridViewCheckBoxColumn.Visible = false;
+      this.darfKKDataGridViewCheckBoxColumn.Width = 50;
+      // 
+      // darfLGDataGridViewCheckBoxColumn
+      // 
+      this.darfLGDataGridViewCheckBoxColumn.DataPropertyName = "DarfLG";
+      this.darfLGDataGridViewCheckBoxColumn.HeaderText = "DarfLG";
+      this.darfLGDataGridViewCheckBoxColumn.MinimumWidth = 50;
+      this.darfLGDataGridViewCheckBoxColumn.Name = "darfLGDataGridViewCheckBoxColumn";
+      this.darfLGDataGridViewCheckBoxColumn.ReadOnly = true;
+      this.darfLGDataGridViewCheckBoxColumn.Visible = false;
+      this.darfLGDataGridViewCheckBoxColumn.Width = 50;
+      // 
+      // kleinkaliberIDDataGridViewTextBoxColumn
+      // 
+      this.kleinkaliberIDDataGridViewTextBoxColumn.DataPropertyName = "KleinkaliberID";
+      this.kleinkaliberIDDataGridViewTextBoxColumn.HeaderText = "KleinkaliberID";
+      this.kleinkaliberIDDataGridViewTextBoxColumn.Name = "kleinkaliberIDDataGridViewTextBoxColumn";
+      this.kleinkaliberIDDataGridViewTextBoxColumn.ReadOnly = true;
+      this.kleinkaliberIDDataGridViewTextBoxColumn.Visible = false;
+      // 
+      // luftgewehrIDDataGridViewTextBoxColumn
+      // 
+      this.luftgewehrIDDataGridViewTextBoxColumn.DataPropertyName = "LuftgewehrID";
+      this.luftgewehrIDDataGridViewTextBoxColumn.HeaderText = "LuftgewehrID";
+      this.luftgewehrIDDataGridViewTextBoxColumn.Name = "luftgewehrIDDataGridViewTextBoxColumn";
+      this.luftgewehrIDDataGridViewTextBoxColumn.ReadOnly = true;
+      this.luftgewehrIDDataGridViewTextBoxColumn.Visible = false;
+      // 
+      // handschuhIDDataGridViewTextBoxColumn
+      // 
+      this.handschuhIDDataGridViewTextBoxColumn.DataPropertyName = "HandschuhID";
+      this.handschuhIDDataGridViewTextBoxColumn.HeaderText = "HandschuhID";
+      this.handschuhIDDataGridViewTextBoxColumn.Name = "handschuhIDDataGridViewTextBoxColumn";
+      this.handschuhIDDataGridViewTextBoxColumn.ReadOnly = true;
+      this.handschuhIDDataGridViewTextBoxColumn.Visible = false;
+      // 
+      // jackeIDDataGridViewTextBoxColumn
+      // 
+      this.jackeIDDataGridViewTextBoxColumn.DataPropertyName = "JackeID";
+      this.jackeIDDataGridViewTextBoxColumn.HeaderText = "JackeID";
+      this.jackeIDDataGridViewTextBoxColumn.Name = "jackeIDDataGridViewTextBoxColumn";
+      this.jackeIDDataGridViewTextBoxColumn.ReadOnly = true;
+      this.jackeIDDataGridViewTextBoxColumn.Visible = false;
+      // 
+      // pistoleIDDataGridViewTextBoxColumn
+      // 
+      this.pistoleIDDataGridViewTextBoxColumn.DataPropertyName = "PistoleID";
+      this.pistoleIDDataGridViewTextBoxColumn.HeaderText = "PistoleID";
+      this.pistoleIDDataGridViewTextBoxColumn.Name = "pistoleIDDataGridViewTextBoxColumn";
+      this.pistoleIDDataGridViewTextBoxColumn.ReadOnly = true;
+      this.pistoleIDDataGridViewTextBoxColumn.Visible = false;
+      // 
+      // infoDataGridViewTextBoxColumn
+      // 
+      this.infoDataGridViewTextBoxColumn.DataPropertyName = "Info";
+      this.infoDataGridViewTextBoxColumn.HeaderText = "Info";
+      this.infoDataGridViewTextBoxColumn.Name = "infoDataGridViewTextBoxColumn";
+      this.infoDataGridViewTextBoxColumn.ReadOnly = true;
+      this.infoDataGridViewTextBoxColumn.Visible = false;
+      // 
+      // istKoenigDataGridViewCheckBoxColumn
+      // 
+      this.istKoenigDataGridViewCheckBoxColumn.DataPropertyName = "IstKoenig";
+      this.istKoenigDataGridViewCheckBoxColumn.HeaderText = "König";
+      this.istKoenigDataGridViewCheckBoxColumn.MinimumWidth = 50;
+      this.istKoenigDataGridViewCheckBoxColumn.Name = "istKoenigDataGridViewCheckBoxColumn";
+      this.istKoenigDataGridViewCheckBoxColumn.ReadOnly = true;
+      this.istKoenigDataGridViewCheckBoxColumn.Visible = false;
+      this.istKoenigDataGridViewCheckBoxColumn.Width = 50;
+      // 
+      // istVizeDataGridViewCheckBoxColumn
+      // 
+      this.istVizeDataGridViewCheckBoxColumn.DataPropertyName = "IstVize";
+      this.istVizeDataGridViewCheckBoxColumn.HeaderText = "Vize";
+      this.istVizeDataGridViewCheckBoxColumn.MinimumWidth = 50;
+      this.istVizeDataGridViewCheckBoxColumn.Name = "istVizeDataGridViewCheckBoxColumn";
+      this.istVizeDataGridViewCheckBoxColumn.ReadOnly = true;
+      this.istVizeDataGridViewCheckBoxColumn.Visible = false;
+      this.istVizeDataGridViewCheckBoxColumn.Width = 50;
+      // 
+      // istArchiviertDataGridViewCheckBoxColumn
+      // 
+      this.istArchiviertDataGridViewCheckBoxColumn.DataPropertyName = "IstArchiviert";
+      this.istArchiviertDataGridViewCheckBoxColumn.HeaderText = "IstArchiviert";
+      this.istArchiviertDataGridViewCheckBoxColumn.Name = "istArchiviertDataGridViewCheckBoxColumn";
+      this.istArchiviertDataGridViewCheckBoxColumn.ReadOnly = true;
+      this.istArchiviertDataGridViewCheckBoxColumn.Visible = false;
+      // 
       // Form1
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -556,24 +568,6 @@
     private System.Windows.Forms.BindingSource personenBindingSource;
     private RBDataDataSetTableAdapters.PersonenTableAdapter personenTableAdapter;
     private RBDataDataSetTableAdapters.TableAdapterManager tableAdapterManager;
-    private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
-    private System.Windows.Forms.DataGridViewTextBoxColumn adressIDDataGridViewTextBoxColumn;
-    private System.Windows.Forms.DataGridViewTextBoxColumn vornameDataGridViewTextBoxColumn;
-    private System.Windows.Forms.DataGridViewTextBoxColumn zweitnameDataGridViewTextBoxColumn;
-    private System.Windows.Forms.DataGridViewTextBoxColumn nachnameDataGridViewTextBoxColumn;
-    private System.Windows.Forms.DataGridViewTextBoxColumn geburtstagDataGridViewTextBoxColumn;
-    private System.Windows.Forms.DataGridViewTextBoxColumn geschlechtDataGridViewTextBoxColumn;
-    private System.Windows.Forms.DataGridViewCheckBoxColumn darfKKDataGridViewCheckBoxColumn;
-    private System.Windows.Forms.DataGridViewCheckBoxColumn darfLGDataGridViewCheckBoxColumn;
-    private System.Windows.Forms.DataGridViewTextBoxColumn kleinkaliberIDDataGridViewTextBoxColumn;
-    private System.Windows.Forms.DataGridViewTextBoxColumn luftgewehrIDDataGridViewTextBoxColumn;
-    private System.Windows.Forms.DataGridViewTextBoxColumn handschuhIDDataGridViewTextBoxColumn;
-    private System.Windows.Forms.DataGridViewTextBoxColumn jackeIDDataGridViewTextBoxColumn;
-    private System.Windows.Forms.DataGridViewTextBoxColumn pistoleIDDataGridViewTextBoxColumn;
-    private System.Windows.Forms.DataGridViewTextBoxColumn infoDataGridViewTextBoxColumn;
-    private System.Windows.Forms.DataGridViewCheckBoxColumn istKoenigDataGridViewCheckBoxColumn;
-    private System.Windows.Forms.DataGridViewCheckBoxColumn istVizeDataGridViewCheckBoxColumn;
-    private System.Windows.Forms.DataGridViewCheckBoxColumn istArchiviertDataGridViewCheckBoxColumn;
     private System.Windows.Forms.DataGridView dataGridView2;
     private RBDataErgebnisse rBDataErgebnisse;
     private System.Windows.Forms.BindingSource ergebnisseBindingSource;
@@ -604,6 +598,24 @@
     private System.Windows.Forms.DataGridViewTextBoxColumn ScheissArt;
     private System.Windows.Forms.DataGridViewTextBoxColumn infoDataGridViewTextBoxColumn1;
     private System.Windows.Forms.DataGridViewCheckBoxColumn istArchiviertDataGridViewCheckBoxColumn1;
+    private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
+    private System.Windows.Forms.DataGridViewTextBoxColumn adressIDDataGridViewTextBoxColumn;
+    private System.Windows.Forms.DataGridViewTextBoxColumn vornameDataGridViewTextBoxColumn;
+    private System.Windows.Forms.DataGridViewTextBoxColumn zweitnameDataGridViewTextBoxColumn;
+    private System.Windows.Forms.DataGridViewTextBoxColumn nachnameDataGridViewTextBoxColumn;
+    private System.Windows.Forms.DataGridViewTextBoxColumn geburtstagDataGridViewTextBoxColumn;
+    private System.Windows.Forms.DataGridViewTextBoxColumn geschlechtDataGridViewTextBoxColumn;
+    private System.Windows.Forms.DataGridViewCheckBoxColumn darfKKDataGridViewCheckBoxColumn;
+    private System.Windows.Forms.DataGridViewCheckBoxColumn darfLGDataGridViewCheckBoxColumn;
+    private System.Windows.Forms.DataGridViewTextBoxColumn kleinkaliberIDDataGridViewTextBoxColumn;
+    private System.Windows.Forms.DataGridViewTextBoxColumn luftgewehrIDDataGridViewTextBoxColumn;
+    private System.Windows.Forms.DataGridViewTextBoxColumn handschuhIDDataGridViewTextBoxColumn;
+    private System.Windows.Forms.DataGridViewTextBoxColumn jackeIDDataGridViewTextBoxColumn;
+    private System.Windows.Forms.DataGridViewTextBoxColumn pistoleIDDataGridViewTextBoxColumn;
+    private System.Windows.Forms.DataGridViewTextBoxColumn infoDataGridViewTextBoxColumn;
+    private System.Windows.Forms.DataGridViewCheckBoxColumn istKoenigDataGridViewCheckBoxColumn;
+    private System.Windows.Forms.DataGridViewCheckBoxColumn istVizeDataGridViewCheckBoxColumn;
+    private System.Windows.Forms.DataGridViewCheckBoxColumn istArchiviertDataGridViewCheckBoxColumn;
   }
 }
 

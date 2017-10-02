@@ -61,6 +61,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dateneingeben\Personen.cs" />
+    <Compile Include="DatenVerarbeitung\Age.cs" />
+    <Compile Include="DatenVerarbeitung\DateTimes.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +89,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RBDataMaterial.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="RBDataVerschiedenes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RBDataVerschiedenes.xsd</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -141,6 +149,17 @@
     <None Include="RBDataMaterial.xss">
       <DependentUpon>RBDataMaterial.xsd</DependentUpon>
     </None>
+    <None Include="RBDataVerschiedenes.xsc">
+      <DependentUpon>RBDataVerschiedenes.xsd</DependentUpon>
+    </None>
+    <None Include="RBDataVerschiedenes.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>RBDataVerschiedenes.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="RBDataVerschiedenes.xss">
+      <DependentUpon>RBDataVerschiedenes.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -168,7 +187,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Datenabfragen\" />
-    <Folder Include="Dateneingeben\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

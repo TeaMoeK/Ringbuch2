@@ -664,13 +664,10 @@ namespace RBii {
                 this.columnID.ReadOnly = true;
                 this.columnID.Unique = true;
                 this.columnAdressID.AllowDBNull = false;
-                this.columnVorname.AllowDBNull = false;
                 this.columnVorname.MaxLength = 24;
                 this.columnZweitname.MaxLength = 24;
-                this.columnNachname.AllowDBNull = false;
                 this.columnNachname.MaxLength = 24;
                 this.columnGeburtstag.AllowDBNull = false;
-                this.columnGeschlecht.AllowDBNull = false;
                 this.columnGeschlecht.MaxLength = 1;
                 this.columnInfo.MaxLength = 1024;
             }
@@ -839,7 +836,12 @@ namespace RBii {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Vorname {
                 get {
-                    return ((string)(this[this.tablePersonen.VornameColumn]));
+                    try {
+                        return ((string)(this[this.tablePersonen.VornameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte Vorname in Tabelle Personen ist DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tablePersonen.VornameColumn] = value;
@@ -866,7 +868,12 @@ namespace RBii {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Nachname {
                 get {
-                    return ((string)(this[this.tablePersonen.NachnameColumn]));
+                    try {
+                        return ((string)(this[this.tablePersonen.NachnameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte Nachname in Tabelle Personen ist DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tablePersonen.NachnameColumn] = value;
@@ -888,7 +895,12 @@ namespace RBii {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Geschlecht {
                 get {
-                    return ((string)(this[this.tablePersonen.GeschlechtColumn]));
+                    try {
+                        return ((string)(this[this.tablePersonen.GeschlechtColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte Geschlecht in Tabelle Personen ist DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tablePersonen.GeschlechtColumn] = value;
@@ -1073,6 +1085,18 @@ namespace RBii {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsVornameNull() {
+                return this.IsNull(this.tablePersonen.VornameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetVornameNull() {
+                this[this.tablePersonen.VornameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsZweitnameNull() {
                 return this.IsNull(this.tablePersonen.ZweitnameColumn);
             }
@@ -1081,6 +1105,30 @@ namespace RBii {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetZweitnameNull() {
                 this[this.tablePersonen.ZweitnameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNachnameNull() {
+                return this.IsNull(this.tablePersonen.NachnameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNachnameNull() {
+                this[this.tablePersonen.NachnameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsGeschlechtNull() {
+                return this.IsNull(this.tablePersonen.GeschlechtColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetGeschlechtNull() {
+                this[this.tablePersonen.GeschlechtColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1396,16 +1444,11 @@ namespace RBii.RBDataDataSetTableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Personen] WHERE (([ID] = @Original_ID) AND ([AdressID] = @Original_AdressID) AND ([Vorname] = @Original_Vorname) AND ((@IsNull_Zweitname = 1 AND [Zweitname] IS NULL) OR ([Zweitname] = @Original_Zweitname)) AND ([Nachname] = @Original_Nachname) AND ([Geburtstag] = @Original_Geburtstag) AND ([Geschlecht] = @Original_Geschlecht) AND ((@IsNull_DarfKK = 1 AND [DarfKK] IS NULL) OR ([DarfKK] = @Original_DarfKK)) AND ((@IsNull_DarfLG = 1 AND [DarfLG] IS NULL) OR ([DarfLG] = @Original_DarfLG)) AND ((@IsNull_KleinkaliberID = 1 AND [KleinkaliberID] IS NULL) OR ([KleinkaliberID] = @Original_KleinkaliberID)) AND ((@IsNull_LuftgewehrID = 1 AND [LuftgewehrID] IS NULL) OR ([LuftgewehrID] = @Original_LuftgewehrID)) AND ((@IsNull_HandschuhID = 1 AND [HandschuhID] IS NULL) OR ([HandschuhID] = @Original_HandschuhID)) AND ((@IsNull_JackeID = 1 AND [JackeID] IS NULL) OR ([JackeID] = @Original_JackeID)) AND ((@IsNull_PistoleID = 1 AND [PistoleID] IS NULL) OR ([PistoleID] = @Original_PistoleID)) AND ((@IsNull_Info = 1 AND [Info] IS NULL) OR ([Info] = @Original_Info)) AND ((@IsNull_IstKoenig = 1 AND [IstKoenig] IS NULL) OR ([IstKoenig] = @Original_IstKoenig)) AND ((@IsNull_IstVize = 1 AND [IstVize] IS NULL) OR ([IstVize] = @Original_IstVize)) AND ((@IsNull_IstArchiviert = 1 AND [IstArchiviert] IS NULL) OR ([IstArchiviert] = @Original_IstArchiviert)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Personen] WHERE (([ID] = @Original_ID) AND ([AdressID] = @Original_AdressID) AND ([Geburtstag] = @Original_Geburtstag) AND ((@IsNull_DarfKK = 1 AND [DarfKK] IS NULL) OR ([DarfKK] = @Original_DarfKK)) AND ((@IsNull_DarfLG = 1 AND [DarfLG] IS NULL) OR ([DarfLG] = @Original_DarfLG)) AND ((@IsNull_KleinkaliberID = 1 AND [KleinkaliberID] IS NULL) OR ([KleinkaliberID] = @Original_KleinkaliberID)) AND ((@IsNull_LuftgewehrID = 1 AND [LuftgewehrID] IS NULL) OR ([LuftgewehrID] = @Original_LuftgewehrID)) AND ((@IsNull_HandschuhID = 1 AND [HandschuhID] IS NULL) OR ([HandschuhID] = @Original_HandschuhID)) AND ((@IsNull_JackeID = 1 AND [JackeID] IS NULL) OR ([JackeID] = @Original_JackeID)) AND ((@IsNull_PistoleID = 1 AND [PistoleID] IS NULL) OR ([PistoleID] = @Original_PistoleID)) AND ((@IsNull_IstKoenig = 1 AND [IstKoenig] IS NULL) OR ([IstKoenig] = @Original_IstKoenig)) AND ((@IsNull_IstVize = 1 AND [IstVize] IS NULL) OR ([IstVize] = @Original_IstVize)) AND ((@IsNull_IstArchiviert = 1 AND [IstArchiviert] IS NULL) OR ([IstArchiviert] = @Original_IstArchiviert)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AdressID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AdressID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Vorname", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Vorname", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Zweitname", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Zweitname", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Zweitname", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Zweitname", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Nachname", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Nachname", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Geburtstag", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Geburtstag", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Geschlecht", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Geschlecht", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DarfKK", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DarfKK", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DarfKK", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DarfKK", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DarfLG", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DarfLG", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -1420,8 +1463,6 @@ namespace RBii.RBDataDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_JackeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JackeID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PistoleID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PistoleID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PistoleID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PistoleID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Info", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Info", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Info", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Info", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_IstKoenig", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IstKoenig", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IstKoenig", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IstKoenig", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_IstVize", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IstVize", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -1430,15 +1471,11 @@ namespace RBii.RBDataDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IstArchiviert", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IstArchiviert", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Personen] ([AdressID], [Vorname], [Zweitname], [Nachname], [Geburtstag], [Geschlecht], [DarfKK], [DarfLG], [KleinkaliberID], [LuftgewehrID], [HandschuhID], [JackeID], [PistoleID], [Info], [IstKoenig], [IstVize], [IstArchiviert]) VALUES (@AdressID, @Vorname, @Zweitname, @Nachname, @Geburtstag, @Geschlecht, @DarfKK, @DarfLG, @KleinkaliberID, @LuftgewehrID, @HandschuhID, @JackeID, @PistoleID, @Info, @IstKoenig, @IstVize, @IstArchiviert);
-SELECT ID, AdressID, Vorname, Zweitname, Nachname, Geburtstag, Geschlecht, DarfKK, DarfLG, KleinkaliberID, LuftgewehrID, HandschuhID, JackeID, PistoleID, Info, IstKoenig, IstVize, IstArchiviert FROM Personen WHERE (ID = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [Personen] ([AdressID], [Geburtstag], [DarfKK], [DarfLG], [KleinkaliberID], [LuftgewehrID], [HandschuhID], [JackeID], [PistoleID], [IstKoenig], [IstVize], [IstArchiviert]) VALUES (@AdressID, @Geburtstag, @DarfKK, @DarfLG, @KleinkaliberID, @LuftgewehrID, @HandschuhID, @JackeID, @PistoleID, @IstKoenig, @IstVize, @IstArchiviert);
+SELECT ID, AdressID, RTRIM(Vorname) AS Vorname, RTRIM(Zweitname) AS Zweitname, RTRIM(Nachname) AS Nachname, Geburtstag, RTRIM(Geschlecht) AS Geschlecht, DarfKK, DarfLG, KleinkaliberID, LuftgewehrID, HandschuhID, JackeID, PistoleID, RTRIM(Info) AS Info, IstKoenig, IstVize, IstArchiviert FROM Personen WITH (NOLOCK) WHERE (ID = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AdressID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AdressID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Vorname", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Vorname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Zweitname", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Zweitname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nachname", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Nachname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Geburtstag", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Geburtstag", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Geschlecht", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Geschlecht", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DarfKK", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DarfKK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DarfLG", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DarfLG", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@KleinkaliberID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "KleinkaliberID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1446,45 +1483,36 @@ SELECT ID, AdressID, Vorname, Zweitname, Nachname, Geburtstag, Geschlecht, DarfK
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HandschuhID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HandschuhID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@JackeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JackeID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PistoleID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PistoleID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Info", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Info", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IstKoenig", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IstKoenig", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IstVize", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IstVize", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IstArchiviert", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IstArchiviert", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Personen] SET [AdressID] = @AdressID, [Vorname] = @Vorname, [Zweitn" +
-                "ame] = @Zweitname, [Nachname] = @Nachname, [Geburtstag] = @Geburtstag, [Geschlec" +
-                "ht] = @Geschlecht, [DarfKK] = @DarfKK, [DarfLG] = @DarfLG, [KleinkaliberID] = @K" +
-                "leinkaliberID, [LuftgewehrID] = @LuftgewehrID, [HandschuhID] = @HandschuhID, [Ja" +
-                "ckeID] = @JackeID, [PistoleID] = @PistoleID, [Info] = @Info, [IstKoenig] = @IstK" +
-                "oenig, [IstVize] = @IstVize, [IstArchiviert] = @IstArchiviert WHERE (([ID] = @Or" +
-                "iginal_ID) AND ([AdressID] = @Original_AdressID) AND ([Vorname] = @Original_Vorn" +
-                "ame) AND ((@IsNull_Zweitname = 1 AND [Zweitname] IS NULL) OR ([Zweitname] = @Ori" +
-                "ginal_Zweitname)) AND ([Nachname] = @Original_Nachname) AND ([Geburtstag] = @Ori" +
-                "ginal_Geburtstag) AND ([Geschlecht] = @Original_Geschlecht) AND ((@IsNull_DarfKK" +
-                " = 1 AND [DarfKK] IS NULL) OR ([DarfKK] = @Original_DarfKK)) AND ((@IsNull_DarfL" +
-                "G = 1 AND [DarfLG] IS NULL) OR ([DarfLG] = @Original_DarfLG)) AND ((@IsNull_Klei" +
-                "nkaliberID = 1 AND [KleinkaliberID] IS NULL) OR ([KleinkaliberID] = @Original_Kl" +
-                "einkaliberID)) AND ((@IsNull_LuftgewehrID = 1 AND [LuftgewehrID] IS NULL) OR ([L" +
-                "uftgewehrID] = @Original_LuftgewehrID)) AND ((@IsNull_HandschuhID = 1 AND [Hands" +
-                "chuhID] IS NULL) OR ([HandschuhID] = @Original_HandschuhID)) AND ((@IsNull_Jacke" +
-                "ID = 1 AND [JackeID] IS NULL) OR ([JackeID] = @Original_JackeID)) AND ((@IsNull_" +
-                "PistoleID = 1 AND [PistoleID] IS NULL) OR ([PistoleID] = @Original_PistoleID)) A" +
-                "ND ((@IsNull_Info = 1 AND [Info] IS NULL) OR ([Info] = @Original_Info)) AND ((@I" +
-                "sNull_IstKoenig = 1 AND [IstKoenig] IS NULL) OR ([IstKoenig] = @Original_IstKoen" +
-                "ig)) AND ((@IsNull_IstVize = 1 AND [IstVize] IS NULL) OR ([IstVize] = @Original_" +
-                "IstVize)) AND ((@IsNull_IstArchiviert = 1 AND [IstArchiviert] IS NULL) OR ([IstA" +
-                "rchiviert] = @Original_IstArchiviert)));\r\nSELECT ID, AdressID, Vorname, Zweitnam" +
-                "e, Nachname, Geburtstag, Geschlecht, DarfKK, DarfLG, KleinkaliberID, LuftgewehrI" +
-                "D, HandschuhID, JackeID, PistoleID, Info, IstKoenig, IstVize, IstArchiviert FROM" +
-                " Personen WHERE (ID = @ID)";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [Personen] SET [AdressID] = @AdressID, [Geburtstag] = @Geburtstag, [DarfKK" +
+                "] = @DarfKK, [DarfLG] = @DarfLG, [KleinkaliberID] = @KleinkaliberID, [Luftgewehr" +
+                "ID] = @LuftgewehrID, [HandschuhID] = @HandschuhID, [JackeID] = @JackeID, [Pistol" +
+                "eID] = @PistoleID, [IstKoenig] = @IstKoenig, [IstVize] = @IstVize, [IstArchivier" +
+                "t] = @IstArchiviert WHERE (([ID] = @Original_ID) AND ([AdressID] = @Original_Adr" +
+                "essID) AND ([Geburtstag] = @Original_Geburtstag) AND ((@IsNull_DarfKK = 1 AND [D" +
+                "arfKK] IS NULL) OR ([DarfKK] = @Original_DarfKK)) AND ((@IsNull_DarfLG = 1 AND [" +
+                "DarfLG] IS NULL) OR ([DarfLG] = @Original_DarfLG)) AND ((@IsNull_KleinkaliberID " +
+                "= 1 AND [KleinkaliberID] IS NULL) OR ([KleinkaliberID] = @Original_KleinkaliberI" +
+                "D)) AND ((@IsNull_LuftgewehrID = 1 AND [LuftgewehrID] IS NULL) OR ([LuftgewehrID" +
+                "] = @Original_LuftgewehrID)) AND ((@IsNull_HandschuhID = 1 AND [HandschuhID] IS " +
+                "NULL) OR ([HandschuhID] = @Original_HandschuhID)) AND ((@IsNull_JackeID = 1 AND " +
+                "[JackeID] IS NULL) OR ([JackeID] = @Original_JackeID)) AND ((@IsNull_PistoleID =" +
+                " 1 AND [PistoleID] IS NULL) OR ([PistoleID] = @Original_PistoleID)) AND ((@IsNul" +
+                "l_IstKoenig = 1 AND [IstKoenig] IS NULL) OR ([IstKoenig] = @Original_IstKoenig))" +
+                " AND ((@IsNull_IstVize = 1 AND [IstVize] IS NULL) OR ([IstVize] = @Original_IstV" +
+                "ize)) AND ((@IsNull_IstArchiviert = 1 AND [IstArchiviert] IS NULL) OR ([IstArchi" +
+                "viert] = @Original_IstArchiviert)));\r\nSELECT ID, AdressID, RTRIM(Vorname) AS Vor" +
+                "name, RTRIM(Zweitname) AS Zweitname, RTRIM(Nachname) AS Nachname, Geburtstag, RT" +
+                "RIM(Geschlecht) AS Geschlecht, DarfKK, DarfLG, KleinkaliberID, LuftgewehrID, Han" +
+                "dschuhID, JackeID, PistoleID, RTRIM(Info) AS Info, IstKoenig, IstVize, IstArchiv" +
+                "iert FROM Personen WITH (NOLOCK) WHERE (ID = @ID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AdressID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AdressID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Vorname", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Vorname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Zweitname", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Zweitname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nachname", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Nachname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Geburtstag", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Geburtstag", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Geschlecht", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Geschlecht", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DarfKK", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DarfKK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DarfLG", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DarfLG", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@KleinkaliberID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "KleinkaliberID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1492,18 +1520,12 @@ SELECT ID, AdressID, Vorname, Zweitname, Nachname, Geburtstag, Geschlecht, DarfK
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HandschuhID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HandschuhID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@JackeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JackeID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PistoleID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PistoleID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Info", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Info", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IstKoenig", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IstKoenig", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IstVize", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IstVize", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IstArchiviert", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IstArchiviert", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AdressID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AdressID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Vorname", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Vorname", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Zweitname", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Zweitname", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Zweitname", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Zweitname", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Nachname", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Nachname", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Geburtstag", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Geburtstag", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Geschlecht", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Geschlecht", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DarfKK", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DarfKK", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DarfKK", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DarfKK", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DarfLG", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DarfLG", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -1518,8 +1540,6 @@ SELECT ID, AdressID, Vorname, Zweitname, Nachname, Geburtstag, Geschlecht, DarfK
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_JackeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JackeID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PistoleID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PistoleID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PistoleID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PistoleID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Info", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Info", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Info", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Info", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_IstKoenig", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IstKoenig", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IstKoenig", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IstKoenig", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_IstVize", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IstVize", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -1542,9 +1562,9 @@ SELECT ID, AdressID, Vorname, Zweitname, Nachname, Geburtstag, Geschlecht, DarfK
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, AdressID, Vorname, Zweitname, Nachname, Geburtstag, Geschlecht, DarfKK" +
-                ", DarfLG, KleinkaliberID, LuftgewehrID, HandschuhID, JackeID, PistoleID, Info, I" +
-                "stKoenig, IstVize, IstArchiviert FROM dbo.Personen";
+            this._commandCollection[0].CommandText = @"SELECT        ID, AdressID, RTRIM(Vorname) AS Vorname, RTRIM(Zweitname) AS Zweitname, RTRIM(Nachname) AS Nachname, Geburtstag, RTRIM(Geschlecht) AS Geschlecht, DarfKK, DarfLG, KleinkaliberID, LuftgewehrID, HandschuhID, 
+                         JackeID, PistoleID, RTRIM(Info) AS Info, IstKoenig, IstVize, IstArchiviert
+FROM            Personen WITH (NOLOCK)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -1605,141 +1625,89 @@ SELECT ID, AdressID, Vorname, Zweitname, Nachname, Geburtstag, Geschlecht, DarfK
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(
-                    int Original_ID, 
-                    int Original_AdressID, 
-                    string Original_Vorname, 
-                    string Original_Zweitname, 
-                    string Original_Nachname, 
-                    System.DateTime Original_Geburtstag, 
-                    string Original_Geschlecht, 
-                    global::System.Nullable<bool> Original_DarfKK, 
-                    global::System.Nullable<bool> Original_DarfLG, 
-                    global::System.Nullable<int> Original_KleinkaliberID, 
-                    global::System.Nullable<int> Original_LuftgewehrID, 
-                    global::System.Nullable<int> Original_HandschuhID, 
-                    global::System.Nullable<int> Original_JackeID, 
-                    global::System.Nullable<int> Original_PistoleID, 
-                    string Original_Info, 
-                    global::System.Nullable<bool> Original_IstKoenig, 
-                    global::System.Nullable<bool> Original_IstVize, 
-                    global::System.Nullable<bool> Original_IstArchiviert) {
+        public virtual int Delete(int Original_ID, int Original_AdressID, System.DateTime Original_Geburtstag, global::System.Nullable<bool> Original_DarfKK, global::System.Nullable<bool> Original_DarfLG, global::System.Nullable<int> Original_KleinkaliberID, global::System.Nullable<int> Original_LuftgewehrID, global::System.Nullable<int> Original_HandschuhID, global::System.Nullable<int> Original_JackeID, global::System.Nullable<int> Original_PistoleID, global::System.Nullable<bool> Original_IstKoenig, global::System.Nullable<bool> Original_IstVize, global::System.Nullable<bool> Original_IstArchiviert) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID));
             this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_AdressID));
-            if ((Original_Vorname == null)) {
-                throw new global::System.ArgumentNullException("Original_Vorname");
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((System.DateTime)(Original_Geburtstag));
+            if ((Original_DarfKK.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((bool)(Original_DarfKK.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_Vorname));
-            }
-            if ((Original_Zweitname == null)) {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_Zweitname));
-            }
-            if ((Original_Nachname == null)) {
-                throw new global::System.ArgumentNullException("Original_Nachname");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((string)(Original_Nachname));
-            }
-            this.Adapter.DeleteCommand.Parameters[6].Value = ((System.DateTime)(Original_Geburtstag));
-            if ((Original_Geschlecht == null)) {
-                throw new global::System.ArgumentNullException("Original_Geschlecht");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((string)(Original_Geschlecht));
-            }
-            if ((Original_DarfKK.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[9].Value = ((bool)(Original_DarfKK.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[9].Value = global::System.DBNull.Value;
-            }
             if ((Original_DarfLG.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[11].Value = ((bool)(Original_DarfLG.Value));
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((bool)(Original_DarfLG.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[11].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             if ((Original_KleinkaliberID.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[12].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[13].Value = ((int)(Original_KleinkaliberID.Value));
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((int)(Original_KleinkaliberID.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[12].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[13].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             if ((Original_LuftgewehrID.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[14].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[15].Value = ((int)(Original_LuftgewehrID.Value));
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((int)(Original_LuftgewehrID.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[14].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[15].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             if ((Original_HandschuhID.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[16].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[17].Value = ((int)(Original_HandschuhID.Value));
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((int)(Original_HandschuhID.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[16].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[17].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             if ((Original_JackeID.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[18].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[19].Value = ((int)(Original_JackeID.Value));
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((int)(Original_JackeID.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[18].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[19].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
             if ((Original_PistoleID.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[20].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[21].Value = ((int)(Original_PistoleID.Value));
+                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[16].Value = ((int)(Original_PistoleID.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[20].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[21].Value = global::System.DBNull.Value;
-            }
-            if ((Original_Info == null)) {
-                this.Adapter.DeleteCommand.Parameters[22].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[23].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[22].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[23].Value = ((string)(Original_Info));
+                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
             if ((Original_IstKoenig.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[24].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[25].Value = ((bool)(Original_IstKoenig.Value));
+                this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[18].Value = ((bool)(Original_IstKoenig.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[24].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[25].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[18].Value = global::System.DBNull.Value;
             }
             if ((Original_IstVize.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[26].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[27].Value = ((bool)(Original_IstVize.Value));
+                this.Adapter.DeleteCommand.Parameters[19].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[20].Value = ((bool)(Original_IstVize.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[26].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[27].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[19].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[20].Value = global::System.DBNull.Value;
             }
             if ((Original_IstArchiviert.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[28].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[29].Value = ((bool)(Original_IstArchiviert.Value));
+                this.Adapter.DeleteCommand.Parameters[21].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[22].Value = ((bool)(Original_IstArchiviert.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[28].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[29].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[21].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[22].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1761,115 +1729,68 @@ SELECT ID, AdressID, Vorname, Zweitname, Nachname, Geburtstag, Geschlecht, DarfK
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(
-                    int AdressID, 
-                    string Vorname, 
-                    string Zweitname, 
-                    string Nachname, 
-                    System.DateTime Geburtstag, 
-                    string Geschlecht, 
-                    global::System.Nullable<bool> DarfKK, 
-                    global::System.Nullable<bool> DarfLG, 
-                    global::System.Nullable<int> KleinkaliberID, 
-                    global::System.Nullable<int> LuftgewehrID, 
-                    global::System.Nullable<int> HandschuhID, 
-                    global::System.Nullable<int> JackeID, 
-                    global::System.Nullable<int> PistoleID, 
-                    string Info, 
-                    global::System.Nullable<bool> IstKoenig, 
-                    global::System.Nullable<bool> IstVize, 
-                    global::System.Nullable<bool> IstArchiviert) {
+        public virtual int Insert(int AdressID, System.DateTime Geburtstag, global::System.Nullable<bool> DarfKK, global::System.Nullable<bool> DarfLG, global::System.Nullable<int> KleinkaliberID, global::System.Nullable<int> LuftgewehrID, global::System.Nullable<int> HandschuhID, global::System.Nullable<int> JackeID, global::System.Nullable<int> PistoleID, global::System.Nullable<bool> IstKoenig, global::System.Nullable<bool> IstVize, global::System.Nullable<bool> IstArchiviert) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(AdressID));
-            if ((Vorname == null)) {
-                throw new global::System.ArgumentNullException("Vorname");
+            this.Adapter.InsertCommand.Parameters[1].Value = ((System.DateTime)(Geburtstag));
+            if ((DarfKK.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((bool)(DarfKK.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Vorname));
-            }
-            if ((Zweitname == null)) {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Zweitname));
-            }
-            if ((Nachname == null)) {
-                throw new global::System.ArgumentNullException("Nachname");
+            if ((DarfLG.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((bool)(DarfLG.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Nachname));
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            this.Adapter.InsertCommand.Parameters[4].Value = ((System.DateTime)(Geburtstag));
-            if ((Geschlecht == null)) {
-                throw new global::System.ArgumentNullException("Geschlecht");
+            if ((KleinkaliberID.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((int)(KleinkaliberID.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(Geschlecht));
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((DarfKK.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((bool)(DarfKK.Value));
+            if ((LuftgewehrID.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((int)(LuftgewehrID.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            if ((HandschuhID.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((int)(HandschuhID.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            if ((DarfLG.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((bool)(DarfLG.Value));
+            if ((JackeID.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((int)(JackeID.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
-            if ((KleinkaliberID.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[8].Value = ((int)(KleinkaliberID.Value));
+            if ((PistoleID.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[8].Value = ((int)(PistoleID.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
-            if ((LuftgewehrID.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[9].Value = ((int)(LuftgewehrID.Value));
+            if ((IstKoenig.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[9].Value = ((bool)(IstKoenig.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
-            if ((HandschuhID.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[10].Value = ((int)(HandschuhID.Value));
+            if ((IstVize.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[10].Value = ((bool)(IstVize.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
-            if ((JackeID.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[11].Value = ((int)(JackeID.Value));
+            if ((IstArchiviert.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[11].Value = ((bool)(IstArchiviert.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[11].Value = global::System.DBNull.Value;
-            }
-            if ((PistoleID.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[12].Value = ((int)(PistoleID.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[12].Value = global::System.DBNull.Value;
-            }
-            if ((Info == null)) {
-                this.Adapter.InsertCommand.Parameters[13].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[13].Value = ((string)(Info));
-            }
-            if ((IstKoenig.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[14].Value = ((bool)(IstKoenig.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[14].Value = global::System.DBNull.Value;
-            }
-            if ((IstVize.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[15].Value = ((bool)(IstVize.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[15].Value = global::System.DBNull.Value;
-            }
-            if ((IstArchiviert.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[16].Value = ((bool)(IstArchiviert.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1893,11 +1814,7 @@ SELECT ID, AdressID, Vorname, Zweitname, Nachname, Geburtstag, Geschlecht, DarfK
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
                     int AdressID, 
-                    string Vorname, 
-                    string Zweitname, 
-                    string Nachname, 
                     System.DateTime Geburtstag, 
-                    string Geschlecht, 
                     global::System.Nullable<bool> DarfKK, 
                     global::System.Nullable<bool> DarfLG, 
                     global::System.Nullable<int> KleinkaliberID, 
@@ -1905,17 +1822,12 @@ SELECT ID, AdressID, Vorname, Zweitname, Nachname, Geburtstag, Geschlecht, DarfK
                     global::System.Nullable<int> HandschuhID, 
                     global::System.Nullable<int> JackeID, 
                     global::System.Nullable<int> PistoleID, 
-                    string Info, 
                     global::System.Nullable<bool> IstKoenig, 
                     global::System.Nullable<bool> IstVize, 
                     global::System.Nullable<bool> IstArchiviert, 
                     int Original_ID, 
                     int Original_AdressID, 
-                    string Original_Vorname, 
-                    string Original_Zweitname, 
-                    string Original_Nachname, 
                     System.DateTime Original_Geburtstag, 
-                    string Original_Geschlecht, 
                     global::System.Nullable<bool> Original_DarfKK, 
                     global::System.Nullable<bool> Original_DarfLG, 
                     global::System.Nullable<int> Original_KleinkaliberID, 
@@ -1923,221 +1835,156 @@ SELECT ID, AdressID, Vorname, Zweitname, Nachname, Geburtstag, Geschlecht, DarfK
                     global::System.Nullable<int> Original_HandschuhID, 
                     global::System.Nullable<int> Original_JackeID, 
                     global::System.Nullable<int> Original_PistoleID, 
-                    string Original_Info, 
                     global::System.Nullable<bool> Original_IstKoenig, 
                     global::System.Nullable<bool> Original_IstVize, 
                     global::System.Nullable<bool> Original_IstArchiviert, 
                     int ID) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(AdressID));
-            if ((Vorname == null)) {
-                throw new global::System.ArgumentNullException("Vorname");
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((System.DateTime)(Geburtstag));
+            if ((DarfKK.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((bool)(DarfKK.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Vorname));
-            }
-            if ((Zweitname == null)) {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Zweitname));
-            }
-            if ((Nachname == null)) {
-                throw new global::System.ArgumentNullException("Nachname");
+            if ((DarfLG.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((bool)(DarfLG.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Nachname));
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(Geburtstag));
-            if ((Geschlecht == null)) {
-                throw new global::System.ArgumentNullException("Geschlecht");
+            if ((KleinkaliberID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(KleinkaliberID.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Geschlecht));
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((DarfKK.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((bool)(DarfKK.Value));
+            if ((LuftgewehrID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(LuftgewehrID.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            if ((HandschuhID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(HandschuhID.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            if ((DarfLG.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((bool)(DarfLG.Value));
+            if ((JackeID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(JackeID.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
-            if ((KleinkaliberID.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(KleinkaliberID.Value));
+            if ((PistoleID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(PistoleID.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
-            if ((LuftgewehrID.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(LuftgewehrID.Value));
+            if ((IstKoenig.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((bool)(IstKoenig.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
-            if ((HandschuhID.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(HandschuhID.Value));
+            if ((IstVize.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((bool)(IstVize.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
-            if ((JackeID.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(JackeID.Value));
+            if ((IstArchiviert.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((bool)(IstArchiviert.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
-            if ((PistoleID.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(PistoleID.Value));
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(Original_ID));
+            this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(Original_AdressID));
+            this.Adapter.UpdateCommand.Parameters[14].Value = ((System.DateTime)(Original_Geburtstag));
+            if ((Original_DarfKK.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((bool)(Original_DarfKK.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
-            }
-            if ((Info == null)) {
-                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Info));
-            }
-            if ((IstKoenig.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((bool)(IstKoenig.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
-            }
-            if ((IstVize.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((bool)(IstVize.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
-            }
-            if ((IstArchiviert.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((bool)(IstArchiviert.Value));
-            }
-            else {
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[17].Value = ((int)(Original_ID));
-            this.Adapter.UpdateCommand.Parameters[18].Value = ((int)(Original_AdressID));
-            if ((Original_Vorname == null)) {
-                throw new global::System.ArgumentNullException("Original_Vorname");
+            if ((Original_DarfLG.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((bool)(Original_DarfLG.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(Original_Vorname));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
             }
-            if ((Original_Zweitname == null)) {
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((string)(Original_Zweitname));
-            }
-            if ((Original_Nachname == null)) {
-                throw new global::System.ArgumentNullException("Original_Nachname");
+            if ((Original_KleinkaliberID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((int)(Original_KleinkaliberID.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((string)(Original_Nachname));
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[23].Value = ((System.DateTime)(Original_Geburtstag));
-            if ((Original_Geschlecht == null)) {
-                throw new global::System.ArgumentNullException("Original_Geschlecht");
+            if ((Original_LuftgewehrID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((int)(Original_LuftgewehrID.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((string)(Original_Geschlecht));
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
             }
-            if ((Original_DarfKK.HasValue == true)) {
+            if ((Original_HandschuhID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((int)(Original_HandschuhID.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
+            }
+            if ((Original_JackeID.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((bool)(Original_DarfKK.Value));
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((int)(Original_JackeID.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[26].Value = global::System.DBNull.Value;
             }
-            if ((Original_DarfLG.HasValue == true)) {
+            if ((Original_PistoleID.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[28].Value = ((bool)(Original_DarfLG.Value));
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((int)(Original_PistoleID.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[28].Value = global::System.DBNull.Value;
             }
-            if ((Original_KleinkaliberID.HasValue == true)) {
+            if ((Original_IstKoenig.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[30].Value = ((int)(Original_KleinkaliberID.Value));
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((bool)(Original_IstKoenig.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[30].Value = global::System.DBNull.Value;
             }
-            if ((Original_LuftgewehrID.HasValue == true)) {
+            if ((Original_IstVize.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[32].Value = ((int)(Original_LuftgewehrID.Value));
+                this.Adapter.UpdateCommand.Parameters[32].Value = ((bool)(Original_IstVize.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[32].Value = global::System.DBNull.Value;
             }
-            if ((Original_HandschuhID.HasValue == true)) {
+            if ((Original_IstArchiviert.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[34].Value = ((int)(Original_HandschuhID.Value));
+                this.Adapter.UpdateCommand.Parameters[34].Value = ((bool)(Original_IstArchiviert.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[34].Value = global::System.DBNull.Value;
             }
-            if ((Original_JackeID.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[36].Value = ((int)(Original_JackeID.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[36].Value = global::System.DBNull.Value;
-            }
-            if ((Original_PistoleID.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[37].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[38].Value = ((int)(Original_PistoleID.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[37].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[38].Value = global::System.DBNull.Value;
-            }
-            if ((Original_Info == null)) {
-                this.Adapter.UpdateCommand.Parameters[39].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[40].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[39].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[40].Value = ((string)(Original_Info));
-            }
-            if ((Original_IstKoenig.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[41].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[42].Value = ((bool)(Original_IstKoenig.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[41].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[42].Value = global::System.DBNull.Value;
-            }
-            if ((Original_IstVize.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[43].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[44].Value = ((bool)(Original_IstVize.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[43].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[44].Value = global::System.DBNull.Value;
-            }
-            if ((Original_IstArchiviert.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[45].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[46].Value = ((bool)(Original_IstArchiviert.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[45].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[46].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.UpdateCommand.Parameters[47].Value = ((int)(ID));
+            this.Adapter.UpdateCommand.Parameters[35].Value = ((int)(ID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2160,11 +2007,7 @@ SELECT ID, AdressID, Vorname, Zweitname, Nachname, Geburtstag, Geschlecht, DarfK
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
                     int AdressID, 
-                    string Vorname, 
-                    string Zweitname, 
-                    string Nachname, 
                     System.DateTime Geburtstag, 
-                    string Geschlecht, 
                     global::System.Nullable<bool> DarfKK, 
                     global::System.Nullable<bool> DarfLG, 
                     global::System.Nullable<int> KleinkaliberID, 
@@ -2172,17 +2015,12 @@ SELECT ID, AdressID, Vorname, Zweitname, Nachname, Geburtstag, Geschlecht, DarfK
                     global::System.Nullable<int> HandschuhID, 
                     global::System.Nullable<int> JackeID, 
                     global::System.Nullable<int> PistoleID, 
-                    string Info, 
                     global::System.Nullable<bool> IstKoenig, 
                     global::System.Nullable<bool> IstVize, 
                     global::System.Nullable<bool> IstArchiviert, 
                     int Original_ID, 
                     int Original_AdressID, 
-                    string Original_Vorname, 
-                    string Original_Zweitname, 
-                    string Original_Nachname, 
                     System.DateTime Original_Geburtstag, 
-                    string Original_Geschlecht, 
                     global::System.Nullable<bool> Original_DarfKK, 
                     global::System.Nullable<bool> Original_DarfLG, 
                     global::System.Nullable<int> Original_KleinkaliberID, 
@@ -2190,11 +2028,10 @@ SELECT ID, AdressID, Vorname, Zweitname, Nachname, Geburtstag, Geschlecht, DarfK
                     global::System.Nullable<int> Original_HandschuhID, 
                     global::System.Nullable<int> Original_JackeID, 
                     global::System.Nullable<int> Original_PistoleID, 
-                    string Original_Info, 
                     global::System.Nullable<bool> Original_IstKoenig, 
                     global::System.Nullable<bool> Original_IstVize, 
                     global::System.Nullable<bool> Original_IstArchiviert) {
-            return this.Update(AdressID, Vorname, Zweitname, Nachname, Geburtstag, Geschlecht, DarfKK, DarfLG, KleinkaliberID, LuftgewehrID, HandschuhID, JackeID, PistoleID, Info, IstKoenig, IstVize, IstArchiviert, Original_ID, Original_AdressID, Original_Vorname, Original_Zweitname, Original_Nachname, Original_Geburtstag, Original_Geschlecht, Original_DarfKK, Original_DarfLG, Original_KleinkaliberID, Original_LuftgewehrID, Original_HandschuhID, Original_JackeID, Original_PistoleID, Original_Info, Original_IstKoenig, Original_IstVize, Original_IstArchiviert, Original_ID);
+            return this.Update(AdressID, Geburtstag, DarfKK, DarfLG, KleinkaliberID, LuftgewehrID, HandschuhID, JackeID, PistoleID, IstKoenig, IstVize, IstArchiviert, Original_ID, Original_AdressID, Original_Geburtstag, Original_DarfKK, Original_DarfLG, Original_KleinkaliberID, Original_LuftgewehrID, Original_HandschuhID, Original_JackeID, Original_PistoleID, Original_IstKoenig, Original_IstVize, Original_IstArchiviert, Original_ID);
         }
     }
     
