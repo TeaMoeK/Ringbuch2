@@ -53,22 +53,6 @@
       this.personenTableAdapter = new RBii.RBDataDataSetTableAdapters.PersonenTableAdapter();
       this.tableAdapterManager = new RBii.RBDataDataSetTableAdapters.TableAdapterManager();
       this.dataGridView2 = new System.Windows.Forms.DataGridView();
-      this.ergebnisseBindingSource = new System.Windows.Forms.BindingSource(this.components);
-      this.rBDataErgebnisse = new RBii.RBDataErgebnisse();
-      this.dataGridView3 = new System.Windows.Forms.DataGridView();
-      this.materialBindingSource = new System.Windows.Forms.BindingSource(this.components);
-      this.rBDataMaterial = new RBii.RBDataMaterial();
-      this.materialTableAdapter = new RBii.RBDataMaterialTableAdapters.MaterialTableAdapter();
-      this.tableAdapterManager2 = new RBii.RBDataMaterialTableAdapters.TableAdapterManager();
-      this.ergebnisseTableAdapter = new RBii.RBDataErgebnisseTableAdapters.ErgebnisseTableAdapter();
-      this.tableAdapterManager1 = new RBii.RBDataErgebnisseTableAdapters.TableAdapterManager();
-      this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-      this.dateiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.ergebnisseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.MaterialGruppe = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.bezeichnungDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.groesseDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.langtextDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.iDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.namenIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.datumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -80,6 +64,22 @@
       this.ScheissArt = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.infoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.istArchiviertDataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+      this.ergebnisseBindingSource = new System.Windows.Forms.BindingSource(this.components);
+      this.rBDataErgebnisse = new RBii.RBDataErgebnisse();
+      this.dataGridView3 = new System.Windows.Forms.DataGridView();
+      this.MaterialGruppe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.bezeichnungDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.groesseDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.langtextDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.materialBindingSource = new System.Windows.Forms.BindingSource(this.components);
+      this.rBDataMaterial = new RBii.RBDataMaterial();
+      this.materialTableAdapter = new RBii.RBDataMaterialTableAdapters.MaterialTableAdapter();
+      this.tableAdapterManager2 = new RBii.RBDataMaterialTableAdapters.TableAdapterManager();
+      this.ergebnisseTableAdapter = new RBii.RBDataErgebnisseTableAdapters.ErgebnisseTableAdapter();
+      this.tableAdapterManager1 = new RBii.RBDataErgebnisseTableAdapters.TableAdapterManager();
+      this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+      this.dateiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.ergebnisseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       ((System.ComponentModel.ISupportInitialize)(this.dgvPersonen)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.personenBindingSource)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.rBDataDataSet)).BeginInit();
@@ -316,119 +316,6 @@
       this.dataGridView2.Size = new System.Drawing.Size(632, 534);
       this.dataGridView2.TabIndex = 1;
       // 
-      // ergebnisseBindingSource
-      // 
-      this.ergebnisseBindingSource.DataMember = "Ergebnisse";
-      this.ergebnisseBindingSource.DataSource = this.rBDataErgebnisse;
-      // 
-      // rBDataErgebnisse
-      // 
-      this.rBDataErgebnisse.DataSetName = "RBDataErgebnisse";
-      this.rBDataErgebnisse.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-      // 
-      // dataGridView3
-      // 
-      this.dataGridView3.AllowUserToAddRows = false;
-      this.dataGridView3.AllowUserToDeleteRows = false;
-      this.dataGridView3.AutoGenerateColumns = false;
-      this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-      this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.MaterialGruppe,
-            this.bezeichnungDataGridViewTextBoxColumn,
-            this.groesseDataGridViewTextBoxColumn,
-            this.langtextDataGridViewTextBoxColumn});
-      this.dataGridView3.DataSource = this.materialBindingSource;
-      this.dataGridView3.Location = new System.Drawing.Point(364, 27);
-      this.dataGridView3.Name = "dataGridView3";
-      this.dataGridView3.ReadOnly = true;
-      this.dataGridView3.Size = new System.Drawing.Size(394, 150);
-      this.dataGridView3.TabIndex = 2;
-      // 
-      // materialBindingSource
-      // 
-      this.materialBindingSource.DataMember = "Material";
-      this.materialBindingSource.DataSource = this.rBDataMaterial;
-      // 
-      // rBDataMaterial
-      // 
-      this.rBDataMaterial.DataSetName = "RBDataMaterial";
-      this.rBDataMaterial.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-      // 
-      // materialTableAdapter
-      // 
-      this.materialTableAdapter.ClearBeforeFill = true;
-      // 
-      // tableAdapterManager2
-      // 
-      this.tableAdapterManager2.BackupDataSetBeforeUpdate = false;
-      this.tableAdapterManager2.Connection = null;
-      this.tableAdapterManager2.UpdateOrder = RBii.RBDataMaterialTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-      // 
-      // ergebnisseTableAdapter
-      // 
-      this.ergebnisseTableAdapter.ClearBeforeFill = true;
-      // 
-      // tableAdapterManager1
-      // 
-      this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
-      this.tableAdapterManager1.Connection = null;
-      this.tableAdapterManager1.UpdateOrder = RBii.RBDataErgebnisseTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-      // 
-      // menuStrip1
-      // 
-      this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dateiToolStripMenuItem,
-            this.ergebnisseToolStripMenuItem});
-      this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-      this.menuStrip1.Name = "menuStrip1";
-      this.menuStrip1.Size = new System.Drawing.Size(1008, 24);
-      this.menuStrip1.TabIndex = 3;
-      this.menuStrip1.Text = "menuStrip1";
-      // 
-      // dateiToolStripMenuItem
-      // 
-      this.dateiToolStripMenuItem.Name = "dateiToolStripMenuItem";
-      this.dateiToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
-      this.dateiToolStripMenuItem.Text = "Datei";
-      // 
-      // ergebnisseToolStripMenuItem
-      // 
-      this.ergebnisseToolStripMenuItem.Name = "ergebnisseToolStripMenuItem";
-      this.ergebnisseToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
-      this.ergebnisseToolStripMenuItem.Text = "Ergebnisse";
-      // 
-      // MaterialGruppe
-      // 
-      this.MaterialGruppe.DataPropertyName = "Gruppe";
-      this.MaterialGruppe.HeaderText = "Gruppe";
-      this.MaterialGruppe.MinimumWidth = 90;
-      this.MaterialGruppe.Name = "MaterialGruppe";
-      this.MaterialGruppe.ReadOnly = true;
-      this.MaterialGruppe.Width = 90;
-      // 
-      // bezeichnungDataGridViewTextBoxColumn
-      // 
-      this.bezeichnungDataGridViewTextBoxColumn.DataPropertyName = "Bezeichnung";
-      this.bezeichnungDataGridViewTextBoxColumn.HeaderText = "Bezeichnung";
-      this.bezeichnungDataGridViewTextBoxColumn.Name = "bezeichnungDataGridViewTextBoxColumn";
-      this.bezeichnungDataGridViewTextBoxColumn.ReadOnly = true;
-      // 
-      // groesseDataGridViewTextBoxColumn
-      // 
-      this.groesseDataGridViewTextBoxColumn.DataPropertyName = "Groesse";
-      this.groesseDataGridViewTextBoxColumn.HeaderText = "Groesse";
-      this.groesseDataGridViewTextBoxColumn.MinimumWidth = 60;
-      this.groesseDataGridViewTextBoxColumn.Name = "groesseDataGridViewTextBoxColumn";
-      this.groesseDataGridViewTextBoxColumn.ReadOnly = true;
-      this.groesseDataGridViewTextBoxColumn.Width = 60;
-      // 
-      // langtextDataGridViewTextBoxColumn
-      // 
-      this.langtextDataGridViewTextBoxColumn.DataPropertyName = "Langtext";
-      this.langtextDataGridViewTextBoxColumn.HeaderText = "Langtext";
-      this.langtextDataGridViewTextBoxColumn.Name = "langtextDataGridViewTextBoxColumn";
-      this.langtextDataGridViewTextBoxColumn.ReadOnly = true;
-      // 
       // iDDataGridViewTextBoxColumn1
       // 
       this.iDDataGridViewTextBoxColumn1.DataPropertyName = "ID";
@@ -519,6 +406,119 @@
       this.istArchiviertDataGridViewCheckBoxColumn1.Name = "istArchiviertDataGridViewCheckBoxColumn1";
       this.istArchiviertDataGridViewCheckBoxColumn1.ReadOnly = true;
       this.istArchiviertDataGridViewCheckBoxColumn1.Visible = false;
+      // 
+      // ergebnisseBindingSource
+      // 
+      this.ergebnisseBindingSource.DataMember = "Ergebnisse";
+      this.ergebnisseBindingSource.DataSource = this.rBDataErgebnisse;
+      // 
+      // rBDataErgebnisse
+      // 
+      this.rBDataErgebnisse.DataSetName = "RBDataErgebnisse";
+      this.rBDataErgebnisse.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+      // 
+      // dataGridView3
+      // 
+      this.dataGridView3.AllowUserToAddRows = false;
+      this.dataGridView3.AllowUserToDeleteRows = false;
+      this.dataGridView3.AutoGenerateColumns = false;
+      this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+      this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.MaterialGruppe,
+            this.bezeichnungDataGridViewTextBoxColumn,
+            this.groesseDataGridViewTextBoxColumn,
+            this.langtextDataGridViewTextBoxColumn});
+      this.dataGridView3.DataSource = this.materialBindingSource;
+      this.dataGridView3.Location = new System.Drawing.Point(364, 27);
+      this.dataGridView3.Name = "dataGridView3";
+      this.dataGridView3.ReadOnly = true;
+      this.dataGridView3.Size = new System.Drawing.Size(394, 150);
+      this.dataGridView3.TabIndex = 2;
+      // 
+      // MaterialGruppe
+      // 
+      this.MaterialGruppe.DataPropertyName = "Gruppe";
+      this.MaterialGruppe.HeaderText = "Gruppe";
+      this.MaterialGruppe.MinimumWidth = 90;
+      this.MaterialGruppe.Name = "MaterialGruppe";
+      this.MaterialGruppe.ReadOnly = true;
+      this.MaterialGruppe.Width = 90;
+      // 
+      // bezeichnungDataGridViewTextBoxColumn
+      // 
+      this.bezeichnungDataGridViewTextBoxColumn.DataPropertyName = "Bezeichnung";
+      this.bezeichnungDataGridViewTextBoxColumn.HeaderText = "Bezeichnung";
+      this.bezeichnungDataGridViewTextBoxColumn.Name = "bezeichnungDataGridViewTextBoxColumn";
+      this.bezeichnungDataGridViewTextBoxColumn.ReadOnly = true;
+      // 
+      // groesseDataGridViewTextBoxColumn
+      // 
+      this.groesseDataGridViewTextBoxColumn.DataPropertyName = "Groesse";
+      this.groesseDataGridViewTextBoxColumn.HeaderText = "Groesse";
+      this.groesseDataGridViewTextBoxColumn.MinimumWidth = 60;
+      this.groesseDataGridViewTextBoxColumn.Name = "groesseDataGridViewTextBoxColumn";
+      this.groesseDataGridViewTextBoxColumn.ReadOnly = true;
+      this.groesseDataGridViewTextBoxColumn.Width = 60;
+      // 
+      // langtextDataGridViewTextBoxColumn
+      // 
+      this.langtextDataGridViewTextBoxColumn.DataPropertyName = "Langtext";
+      this.langtextDataGridViewTextBoxColumn.HeaderText = "Langtext";
+      this.langtextDataGridViewTextBoxColumn.Name = "langtextDataGridViewTextBoxColumn";
+      this.langtextDataGridViewTextBoxColumn.ReadOnly = true;
+      // 
+      // materialBindingSource
+      // 
+      this.materialBindingSource.DataMember = "Material";
+      this.materialBindingSource.DataSource = this.rBDataMaterial;
+      // 
+      // rBDataMaterial
+      // 
+      this.rBDataMaterial.DataSetName = "RBDataMaterial";
+      this.rBDataMaterial.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+      // 
+      // materialTableAdapter
+      // 
+      this.materialTableAdapter.ClearBeforeFill = true;
+      // 
+      // tableAdapterManager2
+      // 
+      this.tableAdapterManager2.BackupDataSetBeforeUpdate = false;
+      this.tableAdapterManager2.Connection = null;
+      this.tableAdapterManager2.UpdateOrder = RBii.RBDataMaterialTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+      // 
+      // ergebnisseTableAdapter
+      // 
+      this.ergebnisseTableAdapter.ClearBeforeFill = true;
+      // 
+      // tableAdapterManager1
+      // 
+      this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
+      this.tableAdapterManager1.Connection = null;
+      this.tableAdapterManager1.UpdateOrder = RBii.RBDataErgebnisseTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+      // 
+      // menuStrip1
+      // 
+      this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dateiToolStripMenuItem,
+            this.ergebnisseToolStripMenuItem});
+      this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+      this.menuStrip1.Name = "menuStrip1";
+      this.menuStrip1.Size = new System.Drawing.Size(1008, 24);
+      this.menuStrip1.TabIndex = 3;
+      this.menuStrip1.Text = "menuStrip1";
+      // 
+      // dateiToolStripMenuItem
+      // 
+      this.dateiToolStripMenuItem.Name = "dateiToolStripMenuItem";
+      this.dateiToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+      this.dateiToolStripMenuItem.Text = "Datei";
+      // 
+      // ergebnisseToolStripMenuItem
+      // 
+      this.ergebnisseToolStripMenuItem.Name = "ergebnisseToolStripMenuItem";
+      this.ergebnisseToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
+      this.ergebnisseToolStripMenuItem.Text = "Ergebnisse";
       // 
       // Form1
       // 
