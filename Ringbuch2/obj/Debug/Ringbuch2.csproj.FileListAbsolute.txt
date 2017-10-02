@@ -1,5 +1,0 @@
-J:\Eigene Dateien\Documents\Visual Studio 2015\Projects\Ringbuch2\Ringbuch2\bin\Debug\Ringbuch2.exe.config
-J:\Eigene Dateien\Documents\Visual Studio 2015\Projects\Ringbuch2\Ringbuch2\obj\Debug\Ringbuch2.csprojResolveAssemblyReference.cache
-J:\Eigene Dateien\Documents\Visual Studio 2015\Projects\Ringbuch2\Ringbuch2\obj\Debug\Ringbuch2.Properties.Resources.resources
-J:\Eigene Dateien\Documents\Visual Studio 2015\Projects\Ringbuch2\Ringbuch2\obj\Debug\Ringbuch2.csproj.GenerateResource.Cache
-J:\Eigene Dateien\Documents\Visual Studio 2015\Projects\Ringbuch2\Ringbuch2\obj\Debug\Ringbuch2.Logic.Dialoge.MyDialog.resources
