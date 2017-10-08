@@ -12,8 +12,14 @@ namespace RBii
 
     private void Form1_Load(object sender, EventArgs e)
     {
-      // TODO: Diese Codezeile lädt Daten in die Tabelle "rBDataDataSet.Personen". Sie können sie bei Bedarf verschieben oder entfernen.
-      this.personenTableAdapter.Fill(this.rBDataDataSet.Personen);
+            // TODO: Diese Codezeile lädt Daten in die Tabelle "rBDataVerschiedenes.Verschiedenes". Sie können sie bei Bedarf verschieben oder entfernen.
+            this.verschiedenesTableAdapter.Fill(this.rBDataVerschiedenes.Verschiedenes);
+            // TODO: Diese Codezeile lädt Daten in die Tabelle "rBDataVerschiedenes.Verschiedenes". Sie können sie bei Bedarf verschieben oder entfernen.
+            this.verschiedenesTableAdapter.Fill(this.rBDataVerschiedenes.Verschiedenes);
+            // TODO: Diese Codezeile lädt Daten in die Tabelle "rBDataVerschiedenes.Verschiedenes". Sie können sie bei Bedarf verschieben oder entfernen.
+            this.verschiedenesTableAdapter.Fill(this.rBDataVerschiedenes.Verschiedenes);
+            // TODO: Diese Codezeile lädt Daten in die Tabelle "rBDataDataSet.Personen". Sie können sie bei Bedarf verschieben oder entfernen.
+            this.personenTableAdapter.Fill(this.rBDataDataSet.Personen);
 
     }
 
@@ -27,6 +33,7 @@ namespace RBii
     {
       DateTime bday = new DateTime(1980, 08, 26);
       MessageBox.Show(DatenVerarbeitung.DateTimes.GetAlter(bday).ToString());
+           
     }
   }
 }

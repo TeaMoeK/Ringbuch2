@@ -9,3 +9,6 @@ J:\Eigene Dateien\Documents\Visual Studio 2015\Projects\Ringbuch2\trunk\obj\Debu
 J:\Eigene Dateien\Documents\Visual Studio 2015\Projects\Ringbuch2\trunk\obj\Debug\RBii.csproj.GenerateResource.Cache
 J:\Eigene Dateien\Documents\Visual Studio 2015\Projects\Ringbuch2\trunk\obj\Debug\RBii.exe
 J:\Eigene Dateien\Documents\Visual Studio 2015\Projects\Ringbuch2\trunk\obj\Debug\RBii.pdb
+F:\Win81\Eigene Dateien\Documents\Visual Studio 2015\Projects\Ringbuch2\trunk\bin\Debug\RBii.exe.config
+F:\Win81\Eigene Dateien\Documents\Visual Studio 2015\Projects\Ringbuch2\trunk\obj\Debug\RBii.exe
+F:\Win81\Eigene Dateien\Documents\Visual Studio 2015\Projects\Ringbuch2\trunk\obj\Debug\RBii.pdb

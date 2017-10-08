@@ -2,9 +2,9 @@
 {
 
 
-  partial class RBDataMaterial
-  {
-  }
+    partial class RBDataMaterial
+    {
+    }
 }
 
 namespace RBii.RBDataMaterialTableAdapters {
