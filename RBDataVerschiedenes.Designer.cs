@@ -844,10 +844,7 @@ namespace RBii.RBDataVerschiedenesTableAdapters {
             this._commandCollection[2].CommandText = "dbo.UpdateSchFest";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.StoredProcedure;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Schuetzenfest", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Schuetzenfest", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Datum", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 23, 3, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1025,31 +1022,13 @@ namespace RBii.RBDataVerschiedenesTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
-        public virtual int UpdateSchFest(global::System.Nullable<global::System.DateTime> Schuetzenfest, global::System.Nullable<int> Original_ID, global::System.Nullable<global::System.DateTime> Original_Schuetzenfest, global::System.Nullable<int> ID) {
+        public virtual int UpdateSchFest(global::System.Nullable<global::System.DateTime> Datum) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
-            if ((Schuetzenfest.HasValue == true)) {
-                command.Parameters[1].Value = ((System.DateTime)(Schuetzenfest.Value));
+            if ((Datum.HasValue == true)) {
+                command.Parameters[1].Value = ((System.DateTime)(Datum.Value));
             }
             else {
                 command.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            if ((Original_ID.HasValue == true)) {
-                command.Parameters[2].Value = ((int)(Original_ID.Value));
-            }
-            else {
-                command.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            if ((Original_Schuetzenfest.HasValue == true)) {
-                command.Parameters[3].Value = ((System.DateTime)(Original_Schuetzenfest.Value));
-            }
-            else {
-                command.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            if ((ID.HasValue == true)) {
-                command.Parameters[4].Value = ((int)(ID.Value));
-            }
-            else {
-                command.Parameters[4].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 

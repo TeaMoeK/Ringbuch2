@@ -77,6 +77,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RBDataDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="RBDataErgebnisse.cs">
+      <DependentUpon>RBDataErgebnisse.xsd</DependentUpon>
+    </Compile>
     <Compile Include="RBDataErgebnisse.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -89,6 +92,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RBDataMaterial.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="RBDataVerschiedenes.cs">
+      <DependentUpon>RBDataVerschiedenes.xsd</DependentUpon>
     </Compile>
     <Compile Include="RBDataVerschiedenes.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -154,8 +160,8 @@
     </None>
     <None Include="RBDataVerschiedenes.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>RBDataVerschiedenes.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>RBDataVerschiedenes.Designer.cs</LastGenOutput>
     </None>
     <None Include="RBDataVerschiedenes.xss">
       <DependentUpon>RBDataVerschiedenes.xsd</DependentUpon>
