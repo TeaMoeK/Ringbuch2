@@ -56,5 +56,13 @@ namespace RBii
 
 
         }
+
+        private void dgvPersonen_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            Forms.ConfigPersonen configPersonen = new Forms.ConfigPersonen(dgvPersonen.CurrentRow);
+
+            configPersonen.ShowDialog();
+        }
+
     }
 }

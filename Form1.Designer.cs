@@ -125,9 +125,11 @@
             this.dgvPersonen.MultiSelect = false;
             this.dgvPersonen.Name = "dgvPersonen";
             this.dgvPersonen.ReadOnly = true;
+            this.dgvPersonen.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPersonen.Size = new System.Drawing.Size(284, 690);
             this.dgvPersonen.TabIndex = 0;
             this.dgvPersonen.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPersonen_CellEnter);
+            this.dgvPersonen.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvPersonen_CellMouseDoubleClick);
             // 
             // iDDataGridViewTextBoxColumn
             // 

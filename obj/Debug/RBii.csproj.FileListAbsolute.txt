@@ -19,3 +19,5 @@ F:\Win81\Eigene Dateien\Documents\Visual Studio 2015\Projects\Ringbuch2\trunk\ob
 F:\Win81\Eigene Dateien\Documents\Visual Studio 2015\Projects\Ringbuch2\trunk\obj\Debug\RBii.csproj.GenerateResource.Cache
 F:\Win81\Eigene Dateien\Documents\Visual Studio 2015\Projects\Ringbuch2\trunk\obj\Debug\RBii.exe
 F:\Win81\Eigene Dateien\Documents\Visual Studio 2015\Projects\Ringbuch2\trunk\obj\Debug\RBii.pdb
+F:\Win81\Eigene Dateien\Documents\Visual Studio 2015\Projects\Ringbuch2\trunk\obj\Debug\RBii.csprojResolveAssemblyReference.cache
+F:\Win81\Eigene Dateien\Documents\Visual Studio 2015\Projects\Ringbuch2\trunk\obj\Debug\RBii.Forms.ConfigPersonen.resources
